@@ -19,7 +19,7 @@ def parsing_naver(URL):
         "formItemPh paragraph"               : "shorttext",
         "formItemPh selectBox"               : "radio",
         "formItemPh scale"                   : "radio",
-        "formItemPh grid"                    : "radio",
+        "formItemPh grid"                    : "grid radio",
         "formItemPh image"                   : "shorttext",
         "formItemPh file"                    : "shorttext",
         "formItemPh datetime"                : "shorttext",
@@ -40,12 +40,27 @@ def parsing_naver(URL):
         title = question.find_element_by_xpath(f"//*[@id='{question_id}']/div/div[1]/div[1]/div/span[1]").text
 
         # body
-        question_values = question.find_elements_by_css_selector(f"#{question_id} > div > div.itemOptions.itemOptionPh.displayModeOption.holder.vertical > div > div")
-
+        body = []
         if type_pocket[type_naver] == "shorttext":
             body = ""
+        
+        elif type_naver == "formItemPh grid":
+                col_selection = []
+                col_datas = question.find_elements_by_class_name('gridColHeader')
+                row_datas = question.find_elements_by_class_name('gridRowHeader')
+                for data in col_datas[1:]:
+                    col_selection.append(data.text)
+                for data in row_datas:
+                    body.append({
+                        "title" : data.text,
+                        "selection" : col_selection
+                    })
+                 
         else:
-            body = []
+            if type_naver == "formItemPh scale":
+                question_values = question.find_elements_by_class_name("optionLabel")
+            else:
+                question_values = question.find_elements_by_css_selector(f"#{question_id} > div > div.itemOptions.itemOptionPh.displayModeOption.holder.vertical > div > div")
             for value in question_values:
                 body.append(value.text)
         
@@ -93,5 +108,5 @@ def parsing_naver(URL):
     return result
 
 
-URL = "http://naver.me/GwaqUXDr"
+URL = "http://naver.me/xge6W4A9"
 print(parsing_naver(URL))
