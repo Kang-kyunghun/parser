@@ -98,12 +98,15 @@ def test_form0():
             "isrequired": True,
         },
         {
-            "type": "radio",
+            "type": "grid radio",
             "title": "표형",
-            "body": [],
+            "body": [
+                {"title": "행 1", "selection": ["열 1", "열 2", "열 3"]},
+                {"title": "행2", "selection": ["열 1", "열 2", "열 3"]},
+            ],
             "image_selections": [],
             "url": "",
-            "isrequired": True,
+            "isrequired": False,
         },
         {
             "type": "shorttext",
@@ -376,3 +379,20 @@ def test_form0():
 #             "isrequired": True,
 #         }
 #     ]
+
+
+def test_form15():
+    URL = "http://naver.me/xge6W4A9"
+    assert parsing_naver(URL) == [
+        {
+            "type": "grid radio",
+            "title": "grid radio, main이미지O, 필수O, 표형",
+            "body": [
+                {"title": "12기", "selection": ["1번", "2번", "3번"]},
+                {"title": "13기", "selection": ["1번", "2번", "3번"]},
+            ],
+            "image_selections": [],
+            "url": "https://form.office.naver.com/form/getStreamImg.cmd?docId=MWU5ZWQ2MDEtYjhlZC00ZjVhLThlNDYtYmQyZTJlMjQ3ZDg3&filename=74f69084-0e93-439e-bdcd-613235483771.jpeg",
+            "isrequired": True,
+        }
+    ]
