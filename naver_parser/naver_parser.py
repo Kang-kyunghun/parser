@@ -32,7 +32,7 @@ def parsing_naver(URL):
 
     survay = driver.find_elements_by_xpath("//*[starts-with(@id, 'formItem_')]")
 
-    for question in survay:
+    for question in survay:                                                           
         question_id = question.get_attribute("id")
         type_naver = question.get_attribute("class")
 
@@ -55,8 +55,12 @@ def parsing_naver(URL):
                         "title" : data.text,
                         "selection" : col_selection
                     })
-                 
-        else:
+        elif type_naver == "formItemPh selectBox":
+            select_id= question.find_element_by_xpath("//*[starts-with(@id, 'selectBox_')]").get_attribute("id")
+            question_values = question.find_elements_by_xpath(f"//*[@id='{select_id}']/div[2]/div")
+            for value in question_values:
+                body.append(value.get_attribute("value"))
+        else: 
             if type_naver == "formItemPh scale":
                 question_values = question.find_elements_by_class_name("optionLabel")
             else:
@@ -107,6 +111,6 @@ def parsing_naver(URL):
         )
     return result
 
-
-URL = "http://naver.me/xge6W4A9"
+# URL = "http://naver.me/GwaqUXDr"
+URL = "http://naver.me/FrLdaGTp"
 print(parsing_naver(URL))
