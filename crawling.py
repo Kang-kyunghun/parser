@@ -22,7 +22,7 @@ def google_form(url):
         new.append(i)
     for k in new:
         # 필수 여부
-        if k.find('div', {"aria-required": "true"}):
+        if k.find('span', {"class": "freebirdFormviewerComponentsQuestionBaseRequiredAsterisk"}):
             isrequired = 'true'
         else:
             isrequired = 'false'
@@ -37,7 +37,7 @@ def google_form(url):
             for i in k.select("#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div > div > div > label > div > div.docssharedWizToggleLabeledContent"):
                 body.append(i.text)
             # image url
-            if k.find('div', {"class":"freebirdFormviewerComponentsQuestionRadioChoicesContainer freebirdFormviewerComponentsQuestionRadioImageRadioGroupContainer"}):
+            if k.find('div', {"class":"freebirdFormviewerComponentsQuestionCheckboxChoice freebirdFormviewerComponentsQuestionCheckboxImageChoiceContainer"}):
                 for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionCheckboxRoot > div.freebirdFormviewerComponentsQuestionCheckboxImageCheckboxGroupContainer > div'):
                     if i.find('div', {"class": "freebirdSolidBorder freebirdMaterialImageoptionImageWrapper"}):
                         image_selections.append(i.img['src'])
@@ -50,11 +50,12 @@ def google_form(url):
             for i in k.select("#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionRadioRoot > div > div > span > div > div > label > div > div.docssharedWizToggleLabeledContent > div"):
                 body.append(i.text)
             #image url
-            for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionRadioRoot > div > div > span > div > div'):
-                if i.find('div', {"class": "freebirdSolidBorder freebirdMaterialImageoptionImageWrapper"}):
-                    image_selections.append(i.img['src'])
-                else:
-                    image_selections.append(default_image)
+            if k.find('div', {"class":"freebirdFormviewerComponentsQuestionRadioChoicesContainer freebirdFormviewerComponentsQuestionRadioImageRadioGroupContainer"}):
+                for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionRadioRoot > div > div > span > div > div'):
+                    if i.find('div', {"class": "freebirdSolidBorder freebirdMaterialImageoptionImageWrapper"}):
+                        image_selections.append(i.img['src'])
+                    else:
+                        image_selections.append(default_image)
 
         #드롭다운
         elif k.select("div[role='listbox']"):
@@ -94,5 +95,5 @@ def google_form(url):
 
     return blueprint
 
-url = "https://forms.gle/esrQ7eX6rBExn4ED8"
+url = "https://forms.gle/PLnphDZk74HQfdm68"
 print(google_form(url))
