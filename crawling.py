@@ -55,7 +55,11 @@ def google_form(url):
                     if i.find('div', {"class": "freebirdSolidBorder freebirdMaterialImageoptionImageWrapper"}):
                         image_selections.append(i.img['src'])
                     else:
+        
                         image_selections.append(default_image)
+        #시간
+        elif k.select("div[class='freebirdFormviewerComponentsQuestionTimeRoot']"):
+            types = 'shorttext'
 
         #드롭다운
         elif k.select("div[role='listbox']"):
@@ -69,12 +73,10 @@ def google_form(url):
             for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionScaleRoot > div.appsMaterialWizToggleRadiogroupGroupContainer.exportGroupContainer.freebirdFormviewerComponentsQuestionScaleScaleRadioGroup > span > div > label> div.freebirdMaterialScalecontentLabel'):
                 body.append(i.text)
 
-        #단답형 & 장문형 & 날짜 & 시간
+        #단답형 & 장문형 & 날짜
         elif k.select("div[class='freebirdFormviewerComponentsQuestionTextRoot']"):
             types = 'shorttext'
         elif k.select("div[class='freebirdFormviewerComponentsQuestionDateDateInputs']"):
-            types = 'shorttext'
-        elif k.select("div[class='freebirdFormviewerComponentsQuestionTimeTimeInputs']"):
             types = 'shorttext'
 
         # #title
@@ -95,5 +97,5 @@ def google_form(url):
 
     return blueprint
 
-url = "https://forms.gle/PLnphDZk74HQfdm68"
+url = "https://forms.gle/bcVqLnhdaV31S54c6"
 print(google_form(url))
