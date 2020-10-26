@@ -30,9 +30,9 @@ def parsing_naver(URL):
     default_image = "https://s3.ap-northeast-2.amazonaws.com/pocketsurvey.earlysloth/images/public/blank.png"
     result = []
 
-    survay = driver.find_elements_by_xpath("//*[starts-with(@id, 'formItem_')]")
+    survey = driver.find_elements_by_xpath("//*[starts-with(@id, 'formItem_')]")
 
-    for question in survay:                                                           
+    for question in survey:                                                           
         question_id = question.get_attribute("id")
         type_naver = question.get_attribute("class")
 
@@ -111,6 +111,3 @@ def parsing_naver(URL):
         )
     return result
 
-# URL = "http://naver.me/GwaqUXDr"
-URL = "http://naver.me/FrLdaGTp"
-print(parsing_naver(URL))
