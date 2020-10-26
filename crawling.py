@@ -11,10 +11,10 @@ def google_form(url):
     driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get(url)
     time.sleep(3)
-    
+
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
-    
+
     blueprint = []
     new = []
     body_all = soup.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div')
@@ -37,30 +37,31 @@ def google_form(url):
             for i in k.select("#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div > div > div > label > div > div.docssharedWizToggleLabeledContent"):
                 body.append(i.text)
             # image url
-            for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionCheckboxRoot > div.freebirdFormviewerComponentsQuestionCheckboxImageCheckboxGroupContainer > div'):
-                if i.find('div', {"class": "freebirdSolidBorder freebirdMaterialImageoptionImageWrapper"}):
-                    image_selections.append(i.img['src'])
-                else:
-                    image_selections.append(default_image)    
-        
+            if k.find('div', {"class":"freebirdFormviewerComponentsQuestionRadioChoicesContainer freebirdFormviewerComponentsQuestionRadioImageRadioGroupContainer"}):
+                for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionCheckboxRoot > div.freebirdFormviewerComponentsQuestionCheckboxImageCheckboxGroupContainer > div'):
+                    if i.find('div', {"class": "freebirdSolidBorder freebirdMaterialImageoptionImageWrapper"}):
+                        image_selections.append(i.img['src'])
+                    else:
+                        image_selections.append(default_image)
+
         #라디오
         elif k.select("div[class='freebirdFormviewerComponentsQuestionRadioRoot']"):
             types = 'radio'
             for i in k.select("#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionRadioRoot > div > div > span > div > div > label > div > div.docssharedWizToggleLabeledContent > div"):
                 body.append(i.text)
-            #image url            
+            #image url
             for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionRadioRoot > div > div > span > div > div'):
                 if i.find('div', {"class": "freebirdSolidBorder freebirdMaterialImageoptionImageWrapper"}):
                     image_selections.append(i.img['src'])
                 else:
                     image_selections.append(default_image)
-        
+
         #드롭다운
         elif k.select("div[role='listbox']"):
             types = 'radio'
             for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionSelectRoot > div > div > div.quantumWizMenuPaperselectOptionList > div > span'):
                 body.append(i.text)
-        
+
         #직선단계
         elif k.select("div[role='radiogroup']"):
             types = 'radio'
@@ -75,7 +76,7 @@ def google_form(url):
         elif k.select("div[class='freebirdFormviewerComponentsQuestionTimeTimeInputs']"):
             types = 'shorttext'
 
-        # #title 
+        # #title
         titles = k.findAll('div', {"class" : "freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont"})
         for title in titles:
             title = title.text
@@ -91,7 +92,7 @@ def google_form(url):
                 }
             )
 
-    return blueprint 
+    return blueprint
 
-url = "https://forms.gle/i2LwEcXrajvi5YvT8"
+url = "https://forms.gle/esrQ7eX6rBExn4ED8"
 print(google_form(url))
