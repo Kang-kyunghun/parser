@@ -6,10 +6,10 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-def parsing_naver(URL):
+def naver_form(url):
     driver = webdriver.Chrome(ChromeDriverManager().install())
 
-    driver.get(URL)
+    driver.get(url)
     time.sleep(2)
 
     type_pocket = {
