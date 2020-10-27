@@ -8,15 +8,18 @@ from django.views                   import View
 from naver_parser.naver_parser import naver_form
 from google_parser.goolge_parser    import google_form
 
-
-
-
-
 class ParsingView(View):
     def post(self, request):
         data  = json.loads(request.body)
         url = data['url']
-        # result = naver_form(url)
-        result = google_form(url)
+        p_naver = re.compile('naver')
+        p_google = re.compile('forms.gle')
+
+        if p_naver.search(url):
+            result = naver_form(url)
+        elif p_google.search(url):
+            result = google_form(url)
+        else:
+            return JsonResponse({'message':'BAD REQUEST'}, status=400)
 
         return JsonResponse({'result':result}, status=200)
