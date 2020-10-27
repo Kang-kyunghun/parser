@@ -21,5 +21,6 @@ class ParsingView(View):
             result = google_form(url)
         else:
             return JsonResponse({'message':'BAD REQUEST'}, status=400)
-
+        if not result:
+            return JsonResponse({'message':'BAD REQUEST'}, status=400)
         return JsonResponse({'result':result}, status=200)
