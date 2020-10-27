@@ -16,7 +16,7 @@ class ParsingView(View):
     def post(self, request):
         data  = json.loads(request.body)
         url = data['url']
-        #result = naver_form(url)
+        # result = naver_form(url)
         result = google_form(url)
 
         return JsonResponse({'result':result}, status=200)
