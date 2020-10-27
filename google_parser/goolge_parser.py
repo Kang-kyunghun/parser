@@ -96,6 +96,3 @@ def google_form(url):
             )
 
     return blueprint
-
-url = "https://forms.gle/bcVqLnhdaV31S54c6"
-print(google_form(url))
