@@ -36,6 +36,7 @@ def google_form(url):
 
         #body
         body = []
+        row = []
         image_selections = []
         default_image = "https://s3.ap-northeast-2.amazonaws.com/pocketsurvey.earlysloth/images/public/blank.png"
         #체크박스
@@ -62,8 +63,17 @@ def google_form(url):
                     if i.find('div', {"class": "freebirdSolidBorder freebirdMaterialImageoptionImageWrapper"}):
                         image_selections.append(i.img['src'])
                     else:
-        
                         image_selections.append(default_image)
+        # 체크, 라디오 그리드
+        elif k.select("div[class='freebirdFormviewerComponentsQuestionGridRoot']"):
+            types = 'radio'
+            for r in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionGridRoot > div > div.freebirdFormviewerComponentsQuestionGridScrollContainer > div > div.freebirdFormviewerComponentsQuestionGridRow.freebirdFormviewerComponentsQuestionGridColumnHeader > div')[1::]:
+                row.append(r.text)
+            for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionGridRoot > div > div.freebirdFormviewerComponentsQuestionGridPinnedHeader > div > div.freebirdFormviewerComponentsQuestionGridCell.freebirdFormviewerComponentsQuestionGridRowHeader')[1::]:
+                body.append({
+                    'title'     : i.text,
+                    'selection' : row
+                })
         #시간
         elif k.select("div[class='freebirdFormviewerComponentsQuestionTimeRoot']"):
             types = 'shorttext'
