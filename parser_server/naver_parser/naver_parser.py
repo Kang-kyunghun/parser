@@ -25,7 +25,7 @@ def naver_form(url):
         "formItemPh paragraph"               : "shorttext",
         "formItemPh selectBox"               : "radio",
         "formItemPh scale"                   : "radio",
-        "formItemPh grid"                    : "grid radio",
+        "formItemPh grid"                    : "radio",
         "formItemPh image"                   : "shorttext",
         "formItemPh file"                    : "shorttext",
         "formItemPh datetime"                : "shorttext",
@@ -37,42 +37,16 @@ def naver_form(url):
     result = []
 
     survey = driver.find_elements_by_xpath("//*[starts-with(@id, 'formItem_')]")
-
+    survey_title = driver.find_element_by_class_name("title").find_element_by_tag_name("span").text
+    survey_description = driver.find_element_by_class_name("description").text
+    survey_description = survey_description.replace('\n', ' ')
+    
     for question in survey:                                                           
         question_id = question.get_attribute("id")
         type_naver = question.get_attribute("class")
-
-        # type
+        question_type = type_pocket[type_naver]
+        # title
         title = question.find_element_by_xpath(f"//*[@id='{question_id}']/div/div[1]/div[1]/div/span[1]").text
-
-        # body
-        body = []
-        if type_pocket[type_naver] == "shorttext":
-            body = ""
-        
-        elif type_naver == "formItemPh grid":
-                col_selection = []
-                col_datas = question.find_elements_by_class_name('gridColHeader')
-                row_datas = question.find_elements_by_class_name('gridRowHeader')
-                for data in col_datas[1:]:
-                    col_selection.append(data.text)
-                for data in row_datas:
-                    body.append({
-                        "title" : data.text,
-                        "selection" : col_selection
-                    })
-        elif type_naver == "formItemPh selectBox":
-            select_id= question.find_element_by_xpath("//*[starts-with(@id, 'selectBox_')]").get_attribute("id")
-            question_values = question.find_elements_by_xpath(f"//*[@id='{select_id}']/div[2]/div")
-            for value in question_values:
-                body.append(value.get_attribute("value"))
-        else: 
-            if type_naver == "formItemPh scale":
-                question_values = question.find_elements_by_class_name("optionLabel")
-            else:
-                question_values = question.find_elements_by_css_selector(f"#{question_id} > div > div.itemOptions.itemOptionPh.displayModeOption.holder.vertical > div > div")
-            for value in question_values:
-                body.append(value.text)
         
         # main image URL
         try:
@@ -96,6 +70,13 @@ def naver_form(url):
         
         if len(image_sources) == count:
             image_selections = []
+        
+        if image_selections:
+            if type_naver == "formItemPh singleChoice vertical":
+                question_type = "radio_image_selections"
+            
+            elif type_naver == "formItemPh multipleChoice vertical":
+                question_type = "check_image_selections"
 
         # 필수 여부
         require_mark = question.find_element_by_class_name("requiredMark").get_attribute("style")
@@ -104,16 +85,56 @@ def naver_form(url):
             isrequired = True
         else:
             isrequired = False
+        
+        # body
+        body = []
+        if type_naver != "formItemPh grid":
+            if type_pocket[type_naver] == "shorttext":
+                body = ""
+        
+            elif type_naver == "formItemPh selectBox":
+                select_id= question.find_element_by_xpath("//*[starts-with(@id, 'selectBox_')]").get_attribute("id")
+                question_values = question.find_elements_by_xpath(f"//*[@id='{select_id}']/div[2]/div")
+                for value in question_values:
+                    body.append(value.get_attribute("value"))
+            else: 
+                if type_naver == "formItemPh scale":
+                    question_values = question.find_elements_by_class_name("optionLabel")
+                else:
+                    question_values = question.find_elements_by_css_selector(f"#{question_id} > div > div.itemOptions.itemOptionPh.displayModeOption.holder.vertical > div > div")
+                for value in question_values:
+                    body.append(value.text)
 
-        result.append(
-            {
-                "type": type_pocket[type_naver],
-                "title": title,
-                "body": body,
-                "image_selections": image_selections,
-                "url": image,
-                "isrequired": isrequired,
-            }
-        )
-    return result
+            result.append(
+                {
+                    "type": question_type,
+                    "title": title,
+                    "body": body,
+                    "image_selections": image_selections,
+                    "url": image,
+                    "isrequired": isrequired,
+                }
+            )
+        else:
+            col_selection = []
+            col_datas = question.find_elements_by_class_name('gridColHeader')
+            row_datas = question.find_elements_by_class_name('gridRowHeader')
+            for data in col_datas[1:]:
+                col_selection.append(data.text)
+            for data in row_datas:
+                result.append(
+                {
+                    "type": question_type,
+                    "title": title + ' ' + data.text,
+                    "body": col_selection,
+                    "image_selections": image_selections,
+                    "url": image,
+                    "isrequired": isrequired,
+                })
 
+    contents = {
+        "survey_title" : survey_title,
+        "survey_description" : survey_description,
+        "body" : result
+    }
+    return contents

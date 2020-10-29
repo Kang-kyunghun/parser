@@ -385,7 +385,7 @@ def test_form15():
     URL = "http://naver.me/xge6W4A9"
     assert parsing_naver(URL) == [
         {
-            "type": "grid radio",
+            "type": "radio",
             "title": "grid radio, main이미지O, 필수O, 표형",
             "body": [
                 {"title": "12기", "selection": ["1번", "2번", "3번"]},
