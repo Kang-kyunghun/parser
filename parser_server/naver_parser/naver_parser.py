@@ -38,6 +38,8 @@ def naver_form(url):
 
     survey = driver.find_elements_by_xpath("//*[starts-with(@id, 'formItem_')]")
     survey_title = driver.find_element_by_class_name("title").find_element_by_tag_name("span").text
+    survey_description = driver.find_element_by_class_name("description").text
+    survey_description = survey_description.replace('\n', ' ')
     
     for question in survey:                                                           
         question_id = question.get_attribute("id")
@@ -118,7 +120,7 @@ def naver_form(url):
         )
     contents = {
         "survey_title" : survey_title,
-        #"survey_description" : survey_description,
+        "survey_description" : survey_description,
         "body" : result
     }
     return contents
