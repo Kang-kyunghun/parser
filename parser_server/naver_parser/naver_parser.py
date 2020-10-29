@@ -25,7 +25,7 @@ def naver_form(url):
         "formItemPh paragraph"               : "shorttext",
         "formItemPh selectBox"               : "radio",
         "formItemPh scale"                   : "radio",
-        "formItemPh grid"                    : "grid radio",
+        "formItemPh grid"                    : "radio",
         "formItemPh image"                   : "shorttext",
         "formItemPh file"                    : "shorttext",
         "formItemPh datetime"                : "shorttext",
@@ -37,7 +37,8 @@ def naver_form(url):
     result = []
 
     survey = driver.find_elements_by_xpath("//*[starts-with(@id, 'formItem_')]")
-
+    survey_title = driver.find_element_by_class_name("title").find_element_by_tag_name("span").text
+    
     for question in survey:                                                           
         question_id = question.get_attribute("id")
         type_naver = question.get_attribute("class")
@@ -115,5 +116,11 @@ def naver_form(url):
                 "isrequired": isrequired,
             }
         )
-    return result
-
+    contents = {
+        "survey_title" : survey_title,
+        #"survey_description" : survey_description,
+        "body" : result
+    }
+    return contents
+url = "https://form.office.naver.com/form/responseView.cmd?formkey=YThjNjc0ZWUtZjhhOS00OTZkLWE2ODgtZTNlNjFmNjJlZWJi&sourceId=urlshare"
+print(naver_form(url))
