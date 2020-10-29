@@ -17,12 +17,12 @@ class ParsingView(View):
         p_google_short = re.compile('forms.gle')
 
         if p_naver.search(url):
-            result = naver_form(url)
+            contents = naver_form(url)
         elif p_google.search(url) or p_google_short.search(url):
-            result = google_form(url)
+            contents = google_form(url)
         else:
             return JsonResponse({'message':'BAD REQUEST'}, status=400)
         
-        if not result:
+        if not contents['body']:
             return JsonResponse({'message':'BAD REQUEST'}, status=400)
-        return JsonResponse({'result':result}, status=200)
+        return JsonResponse({'contents' : contents}, status=200)
