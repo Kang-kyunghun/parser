@@ -44,8 +44,8 @@ def naver_form(url):
     for question in survey:                                                           
         question_id = question.get_attribute("id")
         type_naver = question.get_attribute("class")
-
-        # type
+        question_type = type_pocket[type_naver]
+        # title
         title = question.find_element_by_xpath(f"//*[@id='{question_id}']/div/div[1]/div[1]/div/span[1]").text
         
         # main image URL
@@ -70,6 +70,13 @@ def naver_form(url):
         
         if len(image_sources) == count:
             image_selections = []
+        
+        if image_selections:
+            if type_naver == "formItemPh singleChoice vertical":
+                question_type = "radio_image_selections"
+            
+            elif type_naver == "formItemPh multipleChoice vertical":
+                question_type = "check_image_selections"
 
         # 필수 여부
         require_mark = question.find_element_by_class_name("requiredMark").get_attribute("style")
@@ -100,7 +107,7 @@ def naver_form(url):
 
             result.append(
                 {
-                    "type": type_pocket[type_naver],
+                    "type": question_type,
                     "title": title,
                     "body": body,
                     "image_selections": image_selections,
@@ -117,7 +124,7 @@ def naver_form(url):
             for data in row_datas:
                 result.append(
                 {
-                    "type": type_pocket[type_naver],
+                    "type": question_type,
                     "title": title + ' ' + data.text,
                     "body": col_selection,
                     "image_selections": image_selections,
@@ -131,5 +138,3 @@ def naver_form(url):
         "body" : result
     }
     return contents
-url = "http://naver.me/xge6W4A9"
-print(naver_form(url))
