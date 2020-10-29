@@ -1,0 +1,633 @@
+[2020-10-27 09:21:58 +0000] [18269] [INFO] Starting gunicorn 20.0.4
+[2020-10-27 09:21:58 +0000] [18269] [INFO] Listening at: http://0.0.0.0:8000 (18269)
+[2020-10-27 09:21:58 +0000] [18269] [INFO] Using worker: sync
+[2020-10-27 09:21:58 +0000] [18271] [INFO] Booting worker with pid: 18271
+[2020-10-27 09:21:58 +0000] [18271] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 961, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 973, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'parser_server'
+[2020-10-27 09:21:58 +0000] [18271] [INFO] Worker exiting (pid: 18271)
+[2020-10-27 09:21:58 +0000] [18269] [INFO] Shutting down: Master
+[2020-10-27 09:21:58 +0000] [18269] [INFO] Reason: Worker failed to boot.
+[2020-10-27 09:24:35 +0000] [18283] [INFO] Starting gunicorn 20.0.4
+[2020-10-27 09:24:35 +0000] [18283] [INFO] Listening at: http://0.0.0.0:8000 (18283)
+[2020-10-27 09:24:35 +0000] [18283] [INFO] Using worker: sync
+[2020-10-27 09:24:35 +0000] [18285] [INFO] Booting worker with pid: 18285
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Method Not Allowed (GET): /parser/form
+Method Not Allowed: /parser/form
+Not Found: /
+Not Found: /
+Not Found: /favicon.ico
+Not Found: /parser
+Method Not Allowed (GET): /parser/form
+Method Not Allowed: /parser/form
+Not Found: /
+Not Found: /
+Not Found: /boaform/admin/formLogin
+Not Found: /
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[2020-10-27 15:41:54 +0000] [20360] [INFO] Starting gunicorn 20.0.4
+[2020-10-27 15:41:54 +0000] [20360] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-27 15:41:54 +0000] [20360] [ERROR] Retrying in 1 second.
+[2020-10-27 15:41:55 +0000] [20360] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-27 15:41:55 +0000] [20360] [ERROR] Retrying in 1 second.
+[2020-10-27 15:41:56 +0000] [20360] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-27 15:41:56 +0000] [20360] [ERROR] Retrying in 1 second.
+[2020-10-27 15:41:57 +0000] [20360] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-27 15:41:57 +0000] [20360] [ERROR] Retrying in 1 second.
+[2020-10-27 15:41:58 +0000] [20360] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-27 15:41:58 +0000] [20360] [ERROR] Retrying in 1 second.
+[2020-10-27 15:41:59 +0000] [20360] [ERROR] Can't connect to ('0.0.0.0', 8000)
+Not Found: /portal/redlion
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /.env
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /boaform/admin/formLogin
+Not Found: /wp-content/plugins/wp-file-manager/readme.txt
+Not Found: /solr/admin/info/system
+Not Found: /.env
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /index.php
+Not Found: /
+Not Found: /api/jsonws/invoke
+Not Found: /
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Trying to download new driver from http://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_linux64.zip
+[WDM] - Driver has been saved in cache [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22]
+Method Not Allowed (GET): /parser/form
+Method Not Allowed: /parser/form
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Bad Request: /parser/form
+Method Not Allowed (GET): /parser/form
+Method Not Allowed: /parser/form
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Bad Request: /parser/form
+Bad Request: /parser/form
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Bad Request: /parser/form
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Method Not Allowed (GET): /parser/form
+Method Not Allowed: /parser/form
+Bad Request: /parser/form
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[2020-10-28 06:06:11 +0000] [18283] [INFO] Handling signal: term
+[2020-10-28 06:06:11 +0000] [18285] [INFO] Worker exiting (pid: 18285)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+[2020-10-28 06:06:12 +0000] [18283] [INFO] Shutting down: Master
+[2020-10-28 06:06:41 +0000] [26596] [INFO] Starting gunicorn 20.0.4
+[2020-10-28 06:06:41 +0000] [26596] [INFO] Listening at: http://0.0.0.0:8000 (26596)
+[2020-10-28 06:06:41 +0000] [26596] [INFO] Using worker: sync
+[2020-10-28 06:06:41 +0000] [26598] [INFO] Booting worker with pid: 26598
+Internal Server Error: /parser/form
+Traceback (most recent call last):
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 165, in _get_response
+    callback, callback_args, callback_kwargs = self.resolve_request(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 288, in resolve_request
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 545, in resolve
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 589, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 582, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/earlysloth_parser/urls.py", line 21, in <module>
+    path('parser', include('project.urls')),
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/project/urls.py", line 3, in <module>
+    from project.views import ParsingView
+  File "/home/ubuntu/webform-parser/parser_server/project/views.py", line 9, in <module>
+    from google_parser.goolge_parser    import google_form
+ModuleNotFoundError: No module named 'google_parser.goolge_parser'
+Internal Server Error: /parser/form
+Traceback (most recent call last):
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 165, in _get_response
+    callback, callback_args, callback_kwargs = self.resolve_request(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 288, in resolve_request
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 545, in resolve
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 589, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 582, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/earlysloth_parser/urls.py", line 21, in <module>
+    path('parser', include('project.urls')),
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/project/urls.py", line 3, in <module>
+    from project.views import ParsingView
+  File "/home/ubuntu/webform-parser/parser_server/project/views.py", line 9, in <module>
+    from google_parser.goolge_parser    import google_form
+ModuleNotFoundError: No module named 'google_parser.goolge_parser'
+Internal Server Error: /parser/form
+Traceback (most recent call last):
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 165, in _get_response
+    callback, callback_args, callback_kwargs = self.resolve_request(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 288, in resolve_request
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 545, in resolve
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 589, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 582, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/earlysloth_parser/urls.py", line 21, in <module>
+    path('parser', include('project.urls')),
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/project/urls.py", line 3, in <module>
+    from project.views import ParsingView
+  File "/home/ubuntu/webform-parser/parser_server/project/views.py", line 9, in <module>
+    from google_parser.goolge_parser    import google_form
+ModuleNotFoundError: No module named 'google_parser.goolge_parser'
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 165, in _get_response
+    callback, callback_args, callback_kwargs = self.resolve_request(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 288, in resolve_request
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 545, in resolve
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 589, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 582, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/earlysloth_parser/urls.py", line 21, in <module>
+    path('parser', include('project.urls')),
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/project/urls.py", line 3, in <module>
+    from project.views import ParsingView
+  File "/home/ubuntu/webform-parser/parser_server/project/views.py", line 9, in <module>
+    from google_parser.goolge_parser    import google_form
+ModuleNotFoundError: No module named 'google_parser.goolge_parser'
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 165, in _get_response
+    callback, callback_args, callback_kwargs = self.resolve_request(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 288, in resolve_request
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 545, in resolve
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 589, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 582, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/earlysloth_parser/urls.py", line 21, in <module>
+    path('parser', include('project.urls')),
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/project/urls.py", line 3, in <module>
+    from project.views import ParsingView
+  File "/home/ubuntu/webform-parser/parser_server/project/views.py", line 9, in <module>
+    from google_parser.goolge_parser    import google_form
+ModuleNotFoundError: No module named 'google_parser.goolge_parser'
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 165, in _get_response
+    callback, callback_args, callback_kwargs = self.resolve_request(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 288, in resolve_request
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 545, in resolve
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 589, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 582, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/earlysloth_parser/urls.py", line 21, in <module>
+    path('parser', include('project.urls')),
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/project/urls.py", line 3, in <module>
+    from project.views import ParsingView
+  File "/home/ubuntu/webform-parser/parser_server/project/views.py", line 9, in <module>
+    from google_parser.goolge_parser    import google_form
+ModuleNotFoundError: No module named 'google_parser.goolge_parser'
+Internal Server Error: /parser/form
+Traceback (most recent call last):
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 165, in _get_response
+    callback, callback_args, callback_kwargs = self.resolve_request(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 288, in resolve_request
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 545, in resolve
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 589, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 582, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/earlysloth_parser/urls.py", line 21, in <module>
+    path('parser', include('project.urls')),
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/project/urls.py", line 3, in <module>
+    from project.views import ParsingView
+  File "/home/ubuntu/webform-parser/parser_server/project/views.py", line 9, in <module>
+    from google_parser.goolge_parser    import google_form
+ModuleNotFoundError: No module named 'google_parser.goolge_parser'
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 165, in _get_response
+    callback, callback_args, callback_kwargs = self.resolve_request(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 288, in resolve_request
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 545, in resolve
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 589, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 582, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/earlysloth_parser/urls.py", line 21, in <module>
+    path('parser', include('project.urls')),
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/project/urls.py", line 3, in <module>
+    from project.views import ParsingView
+  File "/home/ubuntu/webform-parser/parser_server/project/views.py", line 9, in <module>
+    from google_parser.goolge_parser    import google_form
+ModuleNotFoundError: No module named 'google_parser.goolge_parser'
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 165, in _get_response
+    callback, callback_args, callback_kwargs = self.resolve_request(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 288, in resolve_request
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 545, in resolve
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 589, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 582, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/earlysloth_parser/urls.py", line 21, in <module>
+    path('parser', include('project.urls')),
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/project/urls.py", line 3, in <module>
+    from project.views import ParsingView
+  File "/home/ubuntu/webform-parser/parser_server/project/views.py", line 9, in <module>
+    from google_parser.goolge_parser    import google_form
+ModuleNotFoundError: No module named 'google_parser.goolge_parser'
+Not Found: /
+Not Found: /
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[2020-10-28 07:44:09 +0000] [26596] [CRITICAL] WORKER TIMEOUT (pid:26598)
+[2020-10-28 07:44:09 +0000] [26598] [INFO] Worker exiting (pid: 26598)
+ 
+[2020-10-28 07:44:09 +0000] [32580] [INFO] Booting worker with pid: 32580
+[2020-10-28 07:45:42 +0000] [26596] [CRITICAL] WORKER TIMEOUT (pid:32580)
+[2020-10-28 07:45:42 +0000] [32580] [INFO] Worker exiting (pid: 32580)
+[2020-10-28 07:45:42 +0000] [32583] [INFO] Booting worker with pid: 32583
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /
+Method Not Allowed (GET): /parser/form
+Method Not Allowed: /parser/form
+Not Found: /
+Method Not Allowed (GET): /parser/form
+Method Not Allowed: /parser/form
+Method Not Allowed (GET): /parser/form
+Method Not Allowed: /parser/form
+Not Found: /
+Not Found: /
+Method Not Allowed (GET): /parser/form
+Method Not Allowed: /parser/form
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Not Found: /parser/form/parser/form
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Not Found: /
+Not Found: /owa/auth/logon.aspx
+Not Found: /
+Not Found: /
+Not Found: /
+[2020-10-28 11:09:38 +0000] [1657] [INFO] Booting worker with pid: 1657
+[2020-10-28 11:09:38 +0000] [26596] [INFO] Handling signal: hup
+[2020-10-28 11:09:38 +0000] [26596] [INFO] Hang up: Master
+[2020-10-28 11:09:38 +0000] [1664] [INFO] Booting worker with pid: 1664
+[2020-10-28 11:09:39 +0000] [1657] [INFO] Worker exiting (pid: 1657)
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /.env
+Not Found: /
+Not Found: /
+[2020-10-28 20:44:01 +0000] [26596] [CRITICAL] WORKER TIMEOUT (pid:1664)
+[2020-10-28 20:44:01 +0000] [1664] [INFO] Worker exiting (pid: 1664)
+[2020-10-28 20:44:01 +0000] [3116] [INFO] Booting worker with pid: 3116
+Not Found: /
+Not Found: /kbrytshpxyk8nbpb/iitam4ntpdtyh3qq
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Trying to download new driver from http://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_linux64.zip
+[WDM] - Driver has been saved in cache [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22]
+Not Found: /favicon.ico
+Not Found: /
+Not Found: /.env
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /owa/auth/logon.aspx

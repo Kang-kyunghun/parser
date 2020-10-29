@@ -6,7 +6,7 @@ from django.http                    import JsonResponse
 from django.views                   import View
 
 from naver_parser.naver_parser import naver_form
-from google_parser.goolge_parser    import google_form
+from google_parser.google_parser    import google_form
 
 class ParsingView(View):
     def post(self, request):
