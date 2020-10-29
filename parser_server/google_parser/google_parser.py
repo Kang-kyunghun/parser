@@ -29,7 +29,7 @@ def google_form(url):
     for i in body_all:
         new.append(i)
     for k in new:
-        url = []
+        url = ""
         body = []
         row = []
         image_selections = []
@@ -42,7 +42,7 @@ def google_form(url):
         #url
         if k.find('div', {'class':'freebirdFormviewerViewItemsEmbeddedobjectImageWrapper'}):
             for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerViewItemsEmbeddedobjectLeft > div > img'):
-                url.append(i.get('src'))
+                url = i.get('src')
 
         #body
         default_image = "https://s3.ap-northeast-2.amazonaws.com/pocketsurvey.earlysloth/images/public/blank.png"
