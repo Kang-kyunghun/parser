@@ -47,35 +47,6 @@ def naver_form(url):
 
         # type
         title = question.find_element_by_xpath(f"//*[@id='{question_id}']/div/div[1]/div[1]/div/span[1]").text
-
-        # body
-        body = []
-        if type_pocket[type_naver] == "shorttext":
-            body = ""
-        
-        elif type_naver == "formItemPh grid":
-                col_selection = []
-                col_datas = question.find_elements_by_class_name('gridColHeader')
-                row_datas = question.find_elements_by_class_name('gridRowHeader')
-                for data in col_datas[1:]:
-                    col_selection.append(data.text)
-                for data in row_datas:
-                    body.append({
-                        "title" : data.text,
-                        "selection" : col_selection
-                    })
-        elif type_naver == "formItemPh selectBox":
-            select_id= question.find_element_by_xpath("//*[starts-with(@id, 'selectBox_')]").get_attribute("id")
-            question_values = question.find_elements_by_xpath(f"//*[@id='{select_id}']/div[2]/div")
-            for value in question_values:
-                body.append(value.get_attribute("value"))
-        else: 
-            if type_naver == "formItemPh scale":
-                question_values = question.find_elements_by_class_name("optionLabel")
-            else:
-                question_values = question.find_elements_by_css_selector(f"#{question_id} > div > div.itemOptions.itemOptionPh.displayModeOption.holder.vertical > div > div")
-            for value in question_values:
-                body.append(value.text)
         
         # main image URL
         try:
@@ -107,22 +78,58 @@ def naver_form(url):
             isrequired = True
         else:
             isrequired = False
+        
+        # body
+        body = []
+        if type_naver != "formItemPh grid":
+            if type_pocket[type_naver] == "shorttext":
+                body = ""
+        
+            elif type_naver == "formItemPh selectBox":
+                select_id= question.find_element_by_xpath("//*[starts-with(@id, 'selectBox_')]").get_attribute("id")
+                question_values = question.find_elements_by_xpath(f"//*[@id='{select_id}']/div[2]/div")
+                for value in question_values:
+                    body.append(value.get_attribute("value"))
+            else: 
+                if type_naver == "formItemPh scale":
+                    question_values = question.find_elements_by_class_name("optionLabel")
+                else:
+                    question_values = question.find_elements_by_css_selector(f"#{question_id} > div > div.itemOptions.itemOptionPh.displayModeOption.holder.vertical > div > div")
+                for value in question_values:
+                    body.append(value.text)
 
-        result.append(
-            {
-                "type": type_pocket[type_naver],
-                "title": title,
-                "body": body,
-                "image_selections": image_selections,
-                "url": image,
-                "isrequired": isrequired,
-            }
-        )
+            result.append(
+                {
+                    "type": type_pocket[type_naver],
+                    "title": title,
+                    "body": body,
+                    "image_selections": image_selections,
+                    "url": image,
+                    "isrequired": isrequired,
+                }
+            )
+        else:
+            col_selection = []
+            col_datas = question.find_elements_by_class_name('gridColHeader')
+            row_datas = question.find_elements_by_class_name('gridRowHeader')
+            for data in col_datas[1:]:
+                col_selection.append(data.text)
+            for data in row_datas:
+                result.append(
+                {
+                    "type": type_pocket[type_naver],
+                    "title": title + ' ' + data.text,
+                    "body": col_selection,
+                    "image_selections": image_selections,
+                    "url": image,
+                    "isrequired": isrequired,
+                })
+
     contents = {
         "survey_title" : survey_title,
         "survey_description" : survey_description,
         "body" : result
     }
     return contents
-url = "https://form.office.naver.com/form/responseView.cmd?formkey=YThjNjc0ZWUtZjhhOS00OTZkLWE2ODgtZTNlNjFmNjJlZWJi&sourceId=urlshare"
+url = "http://naver.me/xge6W4A9"
 print(naver_form(url))
