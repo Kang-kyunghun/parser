@@ -46,6 +46,82 @@ def google_form(url):
 
         #body
         default_image = "https://s3.ap-northeast-2.amazonaws.com/pocketsurvey.earlysloth/images/public/blank.png"
+<<<<<<< HEAD
+        #체크박스
+        if k.select("div[role='listitem']"):
+            types = 'check'
+            for i in k.select("#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div > div > div > label > div > div.docssharedWizToggleLabeledContent"):
+                body.append(i.text)
+            # image url
+            if k.find('div', {"class":"freebirdFormviewerComponentsQuestionCheckboxChoice freebirdFormviewerComponentsQuestionCheckboxImageChoiceContainer"}):
+                for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionCheckboxRoot > div.freebirdFormviewerComponentsQuestionCheckboxImageCheckboxGroupContainer > div'):
+                    if i.find('div', {"class": "freebirdSolidBorder freebirdMaterialImageoptionImageWrapper"}):
+                        image_selections.append(i.img['src'])
+                    else:
+                        image_selections.append(default_image)
+
+        #라디오
+        elif k.select("div[class='freebirdFormviewerComponentsQuestionRadioRoot']"):
+            types = 'radio'
+            for i in k.select("#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionRadioRoot > div > div > span > div > div > label > div > div.docssharedWizToggleLabeledContent > div"):
+                body.append(i.text)
+            #image url
+            if k.find('div', {"class":"freebirdFormviewerComponentsQuestionRadioChoicesContainer freebirdFormviewerComponentsQuestionRadioImageRadioGroupContainer"}):
+                for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionRadioRoot > div > div > span > div > div'):
+                    if i.find('div', {"class": "freebirdSolidBorder freebirdMaterialImageoptionImageWrapper"}):
+                        image_selections.append(i.img['src'])
+                    else:
+                        image_selections.append(default_image)
+        # 체크, 라디오 그리드
+        elif k.select("div[class='freebirdFormviewerComponentsQuestionGridRoot']"):
+            types = 'radio'
+            for r in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionGridRoot > div > div.freebirdFormviewerComponentsQuestionGridScrollContainer > div > div.freebirdFormviewerComponentsQuestionGridRow.freebirdFormviewerComponentsQuestionGridColumnHeader > div')[1::]:
+                row.append(r.text)
+            for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionGridRoot > div > div.freebirdFormviewerComponentsQuestionGridPinnedHeader > div > div.freebirdFormviewerComponentsQuestionGridCell.freebirdFormviewerComponentsQuestionGridRowHeader')[1::]:
+                body.append({
+                    'title'     : i.text,
+                    'selection' : row
+                })
+        #시간
+        elif k.select("div[class='freebirdFormviewerComponentsQuestionTimeRoot']"):
+            types = 'shorttext'
+
+        #드롭다운
+        elif k.select("div[role='listbox']"):
+            types = 'radio'
+            for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionSelectRoot > div > div > div.quantumWizMenuPaperselectOptionList > div > span'):
+                body.append(i.text)
+
+        #직선단계
+        elif k.select("div[role='radiogroup']"):
+            types = 'radio'
+            for i in k.select('#mG61Hd > div.freebirdFormviewerViewFormCard.exportFormCard > div > div.freebirdFormviewerViewItemList > div > div > div > div.freebirdFormviewerComponentsQuestionScaleRoot > div.appsMaterialWizToggleRadiogroupGroupContainer.exportGroupContainer.freebirdFormviewerComponentsQuestionScaleScaleRadioGroup > span > div > label> div.freebirdMaterialScalecontentLabel'):
+                body.append(i.text)
+
+        #단답형 & 장문형 & 날짜
+        elif k.select("div[class='freebirdFormviewerComponentsQuestionTextRoot']"):
+            types = 'shorttext'
+        elif k.select("div[class='freebirdFormviewerComponentsQuestionDateDateInputs']"):
+            types = 'shorttext'
+
+        # #title
+        titles = k.findAll('div', {"class" : "freebirdFormviewerComponentsQuestionBaseTitle exportItemTitle freebirdCustomFont"})
+        for title in titles:
+            title = title.text
+
+            blueprint.append(
+                {
+                    "type": types,
+                    "title": title.rstrip("*"),
+                    "body": body,
+                    "image_selections": image_selections,
+                    "url": "",
+                    "isrequired": isrequired,
+                }
+            )
+
+    return blueprint
+=======
         if not k.select("div[class='freebirdFormviewerComponentsQuestionGridRoot']"):
             #체크박스
             if k.find('div', {"class":'freebirdFormviewerComponentsQuestionCheckboxRoot'}):
@@ -156,3 +232,4 @@ def google_form(url):
         }
 
     return contents
+>>>>>>> 3079254f88ef2a2eaae0fc6ae8ec5748ce29da19
