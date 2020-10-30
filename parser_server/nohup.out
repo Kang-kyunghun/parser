@@ -631,3 +631,177 @@ Not Found: /
 Not Found: /
 Not Found: /
 Not Found: /owa/auth/logon.aspx
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Not Found: /
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[2020-10-29 11:33:44 +0000] [3116] [INFO] Worker exiting (pid: 3116)
+ 
+ 
+ 
+[2020-10-29 11:33:45 +0000] [14617] [INFO] Booting worker with pid: 14617
+[2020-10-29 11:37:55 +0000] [14617] [INFO] Worker exiting (pid: 14617)
+[2020-10-29 11:37:55 +0000] [14620] [INFO] Booting worker with pid: 14620
+[2020-10-29 11:38:20 +0000] [14620] [INFO] Worker exiting (pid: 14620)
+[2020-10-29 11:38:20 +0000] [14623] [INFO] Booting worker with pid: 14623
+Internal Server Error: /parser/form
+Traceback (most recent call last):
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 165, in _get_response
+    callback, callback_args, callback_kwargs = self.resolve_request(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 288, in resolve_request
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 545, in resolve
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 589, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/resolvers.py", line 582, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/earlysloth_parser/urls.py", line 21, in <module>
+    path('parser', include('project.urls')),
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/webform-parser/parser_server/project/urls.py", line 3, in <module>
+    from project.views import ParsingView
+  File "/home/ubuntu/webform-parser/parser_server/project/views.py", line 9, in <module>
+    from google_parser.google_parser    import google_form
+  File "/home/ubuntu/webform-parser/parser_server/google_parser/google_parser.py", line 49
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Not Found: /.env
+Not Found: /
+Not Found: /
+Not Found: /bag2
+Not Found: /ip.ws.126.net:443
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /
+Not Found: /.env
+Not Found: /
+Not Found: /
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Trying to download new driver from http://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_linux64.zip
+[WDM] - Driver has been saved in cache [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22]
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Internal Server Error: /parser/form
+Traceback (most recent call last):
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/webform-parser/parser_server/project/views.py", line 13, in post
+    data  = json.loads(request.body)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/home/ubuntu/yes/envs/project/lib/python3.8/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting ',' delimiter: line 3 column 1 (char 40)
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Not Found: /
+Not Found: /
+Not Found: /
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Not Found: /
+Not Found: /favicon.ico
+Not Found: /
+Not Found: /
+Not Found: /
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+[WDM] - Current google-chrome version is 86.0.4240
+[WDM] - Get LATEST driver version for 86.0.4240
+[WDM] - Driver [/home/ubuntu/.wdm/drivers/chromedriver/linux64/86.0.4240.22/chromedriver] found in cache
+Not Found: /
+Not Found: /
+[2020-10-30 05:49:51 +0000] [20303] [INFO] Starting gunicorn 20.0.4
+[2020-10-30 05:49:51 +0000] [20303] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 05:49:51 +0000] [20303] [ERROR] Retrying in 1 second.
+[2020-10-30 05:49:52 +0000] [20303] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 05:49:52 +0000] [20303] [ERROR] Retrying in 1 second.
+[2020-10-30 05:49:53 +0000] [20303] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 05:49:53 +0000] [20303] [ERROR] Retrying in 1 second.
+[2020-10-30 05:49:54 +0000] [20303] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 05:49:54 +0000] [20303] [ERROR] Retrying in 1 second.
+[2020-10-30 05:49:55 +0000] [20303] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 05:49:55 +0000] [20303] [ERROR] Retrying in 1 second.
+[2020-10-30 05:49:56 +0000] [20303] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2020-10-30 06:01:31 +0000] [20386] [INFO] Starting gunicorn 20.0.4
+[2020-10-30 06:01:31 +0000] [20386] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 06:01:31 +0000] [20386] [ERROR] Retrying in 1 second.
+[2020-10-30 06:01:32 +0000] [20386] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 06:01:32 +0000] [20386] [ERROR] Retrying in 1 second.
+[2020-10-30 06:01:33 +0000] [20386] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 06:01:33 +0000] [20386] [ERROR] Retrying in 1 second.
+[2020-10-30 06:01:34 +0000] [20386] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 06:01:34 +0000] [20386] [ERROR] Retrying in 1 second.
+[2020-10-30 06:01:35 +0000] [20386] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 06:01:35 +0000] [20386] [ERROR] Retrying in 1 second.
+[2020-10-30 06:01:36 +0000] [20386] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2020-10-30 06:10:47 +0000] [20540] [INFO] Starting gunicorn 20.0.4
+[2020-10-30 06:10:47 +0000] [20540] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 06:10:47 +0000] [20540] [ERROR] Retrying in 1 second.
+[2020-10-30 06:10:48 +0000] [20540] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 06:10:48 +0000] [20540] [ERROR] Retrying in 1 second.
+[2020-10-30 06:10:49 +0000] [20540] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 06:10:49 +0000] [20540] [ERROR] Retrying in 1 second.
+[2020-10-30 06:10:50 +0000] [20540] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 06:10:50 +0000] [20540] [ERROR] Retrying in 1 second.
+[2020-10-30 06:10:51 +0000] [20540] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-10-30 06:10:51 +0000] [20540] [ERROR] Retrying in 1 second.
+[2020-10-30 06:10:52 +0000] [20540] [ERROR] Can't connect to ('0.0.0.0', 8000)
