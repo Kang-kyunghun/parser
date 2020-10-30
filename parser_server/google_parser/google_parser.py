@@ -156,4 +156,3 @@ def google_form(url):
         }
 
     return contents
-
