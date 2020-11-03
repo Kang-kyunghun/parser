@@ -103,7 +103,11 @@ def naver_form(url):
                 else:
                     question_values = question.find_elements_by_css_selector(f"#{question_id} > div > div.itemOptions.itemOptionPh.displayModeOption.holder.vertical > div > div")
                 for value in question_values:
-                    body.append(value.text)
+                    text = value.text
+                    print(text)
+                    if text == '기타 :':
+                        text = '기타:'
+                    body.append(text)
 
             result.append(
                 {
