@@ -16,7 +16,7 @@ def naver_form(url):
     driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
 
     driver.get(url)
-    time.sleep(2)
+    time.sleep(1)
 
     type_pocket = {
         "formItemPh singleChoice vertical"   : "radio",
@@ -140,4 +140,5 @@ def naver_form(url):
         "survey_description" : survey_description,
         "body" : result
     }
+    driver.quit()
     return contents
