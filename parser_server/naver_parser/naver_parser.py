@@ -16,7 +16,7 @@ def naver_form(url):
     driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
 
     driver.get(url)
-    time.sleep(2)
+    time.sleep(1)
 
     type_pocket = {
         "formItemPh singleChoice vertical"   : "radio",
@@ -103,7 +103,10 @@ def naver_form(url):
                 else:
                     question_values = question.find_elements_by_css_selector(f"#{question_id} > div > div.itemOptions.itemOptionPh.displayModeOption.holder.vertical > div > div")
                 for value in question_values:
-                    body.append(value.text)
+                    text = value.text
+                    if text == '기타 :':
+                        text = '기타:'
+                    body.append(text)
 
             result.append(
                 {
@@ -139,5 +142,4 @@ def naver_form(url):
     }
 
     driver.quit()
-
     return contents

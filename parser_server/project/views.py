@@ -12,17 +12,20 @@ class ParsingView(View):
     def post(self, request):
         data  = json.loads(request.body)
         url = data['url']
-        p_naver = re.compile('naver')
-        p_google = re.compile('google')
+        p_naver = re.compile('naver.me')
+        p_google = re.compile('docs.google.com/form')
         p_google_short = re.compile('forms.gle')
 
         if p_naver.search(url):
             contents = naver_form(url)
+            form_type = 'naver'
         elif p_google.search(url) or p_google_short.search(url):
             contents = google_form(url)
+            form_type = 'google'
         else:
-            return JsonResponse({'message':'BAD REQUEST'}, status=400)
+            return JsonResponse({'message':'지원하지 않는 URL입니다.'}, status=400)
         
         if not contents['body']:
-            return JsonResponse({'message':'BAD REQUEST'}, status=400)
-        return JsonResponse({'contents' : contents}, status=200)
+            return JsonResponse({'message':'공유 권한을 확인해주세요.'}, status=401)
+        return JsonResponse({'type'     : form_type,
+                             'contents' : contents}, status=200)
