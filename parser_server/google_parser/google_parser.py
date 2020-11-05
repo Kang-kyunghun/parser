@@ -154,5 +154,6 @@ def google_form(url):
             "survey_description" : survey_description,
             "body" : blueprint
         }
+    driver.quit()
 
     return contents

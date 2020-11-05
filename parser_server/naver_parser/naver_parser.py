@@ -137,4 +137,7 @@ def naver_form(url):
         "survey_description" : survey_description,
         "body" : result
     }
+
+    driver.quit()
+
     return contents
