@@ -7,7 +7,7 @@ from uuid import uuid4
 # len(data_excel) :  row의 길이
 # len(data_excel.columns) :column의 길이
 # data_excel.values[row] : 1명이 답한 모든 답
-def mapper_radio(data_blueprint, data_excel, data_answer,  changed_time, uuid):
+def mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     order = data_answer["order"]
     body = data_blueprint["contents"]["body"][order - 1]
     selections = body["body"]
@@ -19,10 +19,10 @@ def mapper_radio(data_blueprint, data_excel, data_answer,  changed_time, uuid):
         is_etc = True
     mapping = {
         "answered_text": data_answer["answer"],
-        "created_at": changed_time,
+        "created_at": unix_time,
         "duration": 1.0,
         "etc_input": None,
-        "finished_at": changed_time + 1.0,
+        "finished_at": unix_time + 1.0,
         "has_etc": has_etc,
         "is_etc": is_etc,
         "metadata": {},
@@ -31,7 +31,7 @@ def mapper_radio(data_blueprint, data_excel, data_answer,  changed_time, uuid):
         "question_text": body["title"],
         "question_type": "radio",
         "selections": selections,
-        "started_at": changed_time,
+        "started_at": unix_time,
         "survey_id": data_blueprint["surveyId"],
         "user_key": "",
         "uuid": uuid,
@@ -39,15 +39,15 @@ def mapper_radio(data_blueprint, data_excel, data_answer,  changed_time, uuid):
     }
     return mapping
 
-def mapper_shorttext(data_blueprint, data_excel, data_answer,  changed_time, uuid):
+def mapper_shorttext(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     order = data_answer["order"]
     body = data_blueprint["contents"]["body"][order - 1]
     mapping = {
         "answered_text": data_answer["answer"],
-        "created_at": changed_time,
+        "created_at": unix_time,
         "duration": 1.0,
         "etc_input": None,
-        "finished_at": changed_time + 1.0,
+        "finished_at": unix_time + 1.0,
         "has_etc": False,
         "is_etc": False,
         "metadata": {},
@@ -56,7 +56,7 @@ def mapper_shorttext(data_blueprint, data_excel, data_answer,  changed_time, uui
         "question_text": body["title"],
         "question_type": "shorttext",
         "selections": "",
-        "started_at": changed_time,
+        "started_at": unix_time,
         "survey_id": data_blueprint["surveyId"],
         "user_key": "",
         "uuid": uuid,
@@ -64,7 +64,7 @@ def mapper_shorttext(data_blueprint, data_excel, data_answer,  changed_time, uui
     }
     return mapping
 
-def mapper_radio_image_selections(data_blueprint, data_answer,  data_excel, changed_time, uuid):
+def mapper_radio_image_selections(data_blueprint, data_answer,  data_excel, unix_time, uuid):
     print('mapper_radio_image_selections')
     return {}
 
@@ -73,9 +73,9 @@ def change_time_format(local_time):
     # str_time = '2016-04-25 13:03:17'
     str_time = local_time
     in_time = time.strptime(str_time,'%Y-%m-%d %H:%M:%S')
-    changed_time = time.mktime(in_time)
+    unix_time = time.mktime(in_time)
     
-    return changed_time
+    return unix_time
 
 
 
@@ -109,7 +109,7 @@ if __name__ == '__main__':
     data_content = data_blueprint['contents']
     FILE_PATH = './test_code_data.xlsx'
     data_excel = pd.read_excel(FILE_PATH)
-    changed_time = change_time_format('2020-10-25 13:03:18')
+    unix_time = change_time_format('2020-10-25 13:03:18')
     data_answer ={
         "order" : 1,
         "answer": "브랜디"
@@ -117,6 +117,6 @@ if __name__ == '__main__':
     }
     uuid = "uuid"
     
-    mapping = mapper_radio(data_blueprint, data_excel, data_answer,  changed_time, uuid)
+    mapping = mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid)
     print(mapping)
     
