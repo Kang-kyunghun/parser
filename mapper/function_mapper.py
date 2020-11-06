@@ -9,20 +9,27 @@ from uuid import uuid4
 def mapper_radio(data_blueprint, data_excel, data_answer,  changed_time, uuid):
     order = data_answer["order"]
     body = data_blueprint["contents"]["body"][order - 1]
+    selections = body["body"]
+    has_etc = False
+    is_etc = False
+    if "기타:" in selections:
+        has_etc = True
+    if not data_answer["answer"] in selections:
+        is_etc = True
     mapping = {
         "answered_text": data_answer["answer"],
         "created_at": changed_time,
         "duration": 1.0,
         "etc_input": None,
         "finished_at": changed_time + 1.0,
-        "has_etc": False,
-        "is_etc": False,
+        "has_etc": has_etc,
+        "is_etc": is_etc,
         "metadata": {},
         "phone": "01000000000",
         "question_order": order,
         "question_text": body["title"],
-        "question_type": "shorttext",
-        "selections": "",
+        "question_type": "radio",
+        "selections": selections,
         "started_at": changed_time,
         "survey_id": data_blueprint["surveyId"],
         "user_key": "",
@@ -91,17 +98,17 @@ def change_time_format(local_time):
 if __name__ == '__main__':
     
     
-    data_blueprint = request_data.request_data
+    data_blueprint = request_data.request_data_radio
     data_content = data_blueprint['contents']
     FILE_PATH = './test_code_data.xlsx'
     data_excel = pd.read_excel(FILE_PATH)
     changed_time = 1111
     data_answer ={
         "order" : 1,
-        "answer": "1번"
+        "answer": "브랜디"
 
     }
     uuid = "uuid"
     
-    mapping = mapper_shorttext(data_blueprint, data_excel, data_answer,  changed_time, uuid)
+    mapping = mapper_radio(data_blueprint, data_excel, data_answer,  changed_time, uuid)
     print(mapping)

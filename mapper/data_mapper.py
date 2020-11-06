@@ -58,4 +58,4 @@ for ansewrs_person in answers_all[:1]:
     }
     #저장 장소는 s3 주소로 바꿔야 됨
     with open(f'./data_json/test{uuid}.json', 'w', encoding='utf-8') as make_file:
-        json.dump(result, make_file, indent="\t")
+        json.dump(result, make_file, indent="\t", ensure_ascii=False)
