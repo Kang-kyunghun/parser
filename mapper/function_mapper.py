@@ -69,8 +69,13 @@ def mapper_radio_image_selections(data_blueprint, data_answer,  data_excel, chan
     return {}
 
 def change_time_format(local_time):
-
-    return 1111
+ 
+    # str_time = '2016-04-25 13:03:17'
+    str_time = local_time
+    in_time = time.strptime(str_time,'%Y-%m-%d %H:%M:%S')
+    changed_time = time.mktime(in_time)
+    
+    return changed_time
 
 
 
@@ -104,7 +109,7 @@ if __name__ == '__main__':
     data_content = data_blueprint['contents']
     FILE_PATH = './test_code_data.xlsx'
     data_excel = pd.read_excel(FILE_PATH)
-    changed_time = 1111
+    changed_time = change_time_format('2020-10-25 13:03:18')
     data_answer ={
         "order" : 1,
         "answer": "브랜디"
@@ -114,3 +119,4 @@ if __name__ == '__main__':
     
     mapping = mapper_radio(data_blueprint, data_excel, data_answer,  changed_time, uuid)
     print(mapping)
+    
