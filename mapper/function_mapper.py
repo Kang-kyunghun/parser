@@ -7,8 +7,29 @@ from uuid import uuid4
 # len(data_excel.columns) :column의 길이
 # data_excel.values[row] : 1명이 답한 모든 답
 def mapper_radio(data_blueprint, data_excel, data_answer,  changed_time, uuid):
-    print('mapper_radio')
-    return {}
+    order = data_answer["order"]
+    body = data_blueprint["contents"]["body"][order - 1]
+    mapping = {
+        "answered_text": data_answer["answer"],
+        "created_at": changed_time,
+        "duration": 1.0,
+        "etc_input": None,
+        "finished_at": changed_time + 1.0,
+        "has_etc": False,
+        "is_etc": False,
+        "metadata": {},
+        "phone": "01000000000",
+        "question_order": order,
+        "question_text": body["title"],
+        "question_type": "shorttext",
+        "selections": "",
+        "started_at": changed_time,
+        "survey_id": data_blueprint["surveyId"],
+        "user_key": "",
+        "uuid": uuid,
+        "version": data_blueprint["version"]
+    }
+    return mapping
 
 def mapper_shorttext(data_blueprint, data_excel, data_answer,  changed_time, uuid):
     order = data_answer["order"]
