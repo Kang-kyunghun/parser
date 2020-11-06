@@ -11,8 +11,27 @@ def mapper_radio(data_request, data_excel, changed_time, uuid):
     return {}
 
 def mapper_shorttext(data_request, data_excel, changed_time, uuid):
-    print('mapper_shorttext')
-    return {}
+    mapping = {
+        "answered_text": data_request["answer"],
+        "created_at": changed_time,
+        "duration": 1.0,
+        "etc_input": None,
+        "finished_at": data_request + 1.0,
+        "has_etc": False,
+        "is_etc": False,
+        "metadata": {},
+        "phone": "01000000000",
+        "question_order": data_request["order"],
+        "question_text": data_request["body"]["title"],
+        "question_type": "shorttext",
+        "selections": "",
+        "started_at": changed_time,
+        "survey_id": data_request["surveyId"],
+        "user_key": "",
+        "uuid": uuid,
+        "version": data_request["version"]
+    }
+    return mapping
 
 def mapper_radio_image_selections(data_request, data_excel, changed_time, uuid):
     print('mapper_radio_image_selections')
@@ -47,4 +66,4 @@ def change_time_format(local_time):
 
 
 if __name__ == '__main__':
-   
+    pass
