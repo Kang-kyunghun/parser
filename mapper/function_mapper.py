@@ -6,34 +6,36 @@ from uuid import uuid4
 # len(data_excel) :  row의 길이
 # len(data_excel.columns) :column의 길이
 # data_excel.values[row] : 1명이 답한 모든 답
-def mapper_radio(data_request, data_excel, changed_time, uuid):
+def mapper_radio(data_blueprint, data_excel, data_answer,  changed_time, uuid):
     print('mapper_radio')
     return {}
 
-def mapper_shorttext(data_request, data_excel, changed_time, uuid):
+def mapper_shorttext(data_blueprint, data_excel, data_answer,  changed_time, uuid):
+    order = data_answer["order"]
+    body = data_blueprint["contents"]["body"][order - 1]
     mapping = {
-        "answered_text": data_request["answer"],
+        "answered_text": data_answer["answer"],
         "created_at": changed_time,
         "duration": 1.0,
         "etc_input": None,
-        "finished_at": data_request + 1.0,
+        "finished_at": changed_time + 1.0,
         "has_etc": False,
         "is_etc": False,
         "metadata": {},
         "phone": "01000000000",
-        "question_order": data_request["order"],
-        "question_text": data_request["body"]["title"],
+        "question_order": order,
+        "question_text": body["title"],
         "question_type": "shorttext",
         "selections": "",
         "started_at": changed_time,
-        "survey_id": data_request["surveyId"],
+        "survey_id": data_blueprint["surveyId"],
         "user_key": "",
         "uuid": uuid,
-        "version": data_request["version"]
+        "version": data_blueprint["version"]
     }
     return mapping
 
-def mapper_radio_image_selections(data_request, data_excel, changed_time, uuid):
+def mapper_radio_image_selections(data_blueprint, data_answer,  data_excel, changed_time, uuid):
     print('mapper_radio_image_selections')
     return {}
 
@@ -66,4 +68,19 @@ def change_time_format(local_time):
 
 
 if __name__ == '__main__':
-    pass
+    
+    
+    data_blueprint = request_data.request_data
+    data_content = data_blueprint['contents']
+    FILE_PATH = './test_code_data.xlsx'
+    data_excel = pd.read_excel(FILE_PATH)
+    changed_time = 1111
+    data_answer ={
+        "order" : 1,
+        "answer": "1번"
+
+    }
+    uuid = "uuid"
+    
+    mapping = mapper_shorttext(data_blueprint, data_excel, data_answer,  changed_time, uuid)
+    print(mapping)
