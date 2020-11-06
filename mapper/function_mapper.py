@@ -1,4 +1,5 @@
 import request_data
+import time
 import pandas as pd
 from math import isnan
 from uuid import uuid4
@@ -68,6 +69,7 @@ def mapper_radio_image_selections(data_blueprint, data_answer,  data_excel, chan
     return {}
 
 def change_time_format(local_time):
+
     return 1111
 
 
