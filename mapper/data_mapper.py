@@ -1,7 +1,9 @@
 import request_data
 import pandas as pd
+import json
 from math import isnan
 from uuid import uuid4
+
 from function_mapper import *
 
 
@@ -20,13 +22,14 @@ for question in data_content['body']:
         if titles[index] == question['title']:
             type_dict[index] = question['type']
             break
-print(type_dict)
+
 # len(data_excel) :  row의 길이
 # len(data_excel.columns) :column의 길이
 # data_excel.values[row] : 1명이 답한 모든 답
 answers_all = data_excel.values
-for ansewrs_person in answers_all:
+for ansewrs_person in answers_all[:1]:
     changed_time = change_time_format(ansewrs_person[0])
+    result = {}
     for index in range(1, len(ansewrs_person)):
         data_answer = {
                 "answer" : ansewrs_person[index],
@@ -45,14 +48,14 @@ for ansewrs_person in answers_all:
         elif question_type == 'radio_image_selections':
             question_data = mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  changed_time, uuid)
             response_data.append(question_data)
-result = {
-    "responseData" : response_data,
-    "surveyId"     : data_blueprint["surveyId"],
-    "urlToken"     : data_blueprint["urlToken"],
-    "uuid"         : uuid,
-    "version"      : data_blueprint["version"]
-    
-}
-    
-
-print(result)
+    result = {
+        "responseData" : response_data,
+        "surveyId"     : data_blueprint["surveyId"],
+        "urlToken"     : data_blueprint["urlToken"],
+        "uuid"         : uuid,
+        "version"      : data_blueprint["version"]
+        
+    }
+    #저장 장소는 s3 주소로 바꿔야 됨
+    with open(f'./data_json/test{uuid}.json', 'w', encoding='utf-8') as make_file:
+        json.dump(result, make_file, indent="\t")
