@@ -97,6 +97,8 @@ def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix
         "version": data_blueprint["version"]
     }
     return mapping
+def mapper_checkt(data_blueprint, data_excel, data_answer,  unix_time, uuid):
+    pass
 
 def change_time_format(local_time):
  
