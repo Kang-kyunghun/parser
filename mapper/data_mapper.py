@@ -4,7 +4,10 @@ import json
 from math import isnan
 from uuid import uuid4
 
-from function_mapper import *
+from function_mapper import (mapper_radio,
+                             mapper_radio_image_selections,
+                             mapper_shorttext,
+                             change_time_format)
 
 
 data_blueprint = request_data.request_data
@@ -15,8 +18,7 @@ data_excel = pd.read_excel(FILE_PATH)
 #설문 전체 문항들 제목 list
 titles = list(data_excel.columns)
 type_dict = {}
-response_data = []
-uuid = str(uuid4())
+
 for question in data_content['body']:
     for index in range(1,len(titles)):
         if titles[index] == question['title']:
@@ -30,6 +32,8 @@ answers_all = data_excel.values
 for ansewrs_person in answers_all[:1]:
     unix_time = change_time_format(ansewrs_person[0])
     result = {}
+    response_data = []
+    uuid = str(uuid4())
     for index in range(1, len(ansewrs_person)):
         data_answer = {
                 "answer" : ansewrs_person[index],
@@ -48,6 +52,7 @@ for ansewrs_person in answers_all[:1]:
         elif question_type == 'radio_image_selections':
             question_data = mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix_time, uuid)
             response_data.append(question_data)
+    
     result = {
         "responseData" : response_data,
         "surveyId"     : data_blueprint["surveyId"],
