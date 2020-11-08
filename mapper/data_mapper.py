@@ -29,8 +29,9 @@ for question in data_content['body']:
 # len(data_excel.columns) :column의 길이
 # data_excel.values[row] : 1명이 답한 모든 답
 answers_all = data_excel.values
-for ansewrs_person in answers_all[:1]:
-    unix_time = change_time_format(ansewrs_person[0])
+for ansewrs_person in answers_all:
+    print(ansewrs_person[0])
+    unix_time = change_time_format(str(ansewrs_person[0]))
     result = {}
     response_data = []
     uuid = str(uuid4())

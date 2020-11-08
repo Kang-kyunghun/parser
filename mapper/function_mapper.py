@@ -18,7 +18,7 @@ def mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     if not data_answer["answer"] in selections:
         is_etc = True
     mapping = {
-        "answered_text": data_answer["answer"],
+        "answered_text": str(data_answer["answer"]),
         "created_at": unix_time,
         "duration": 1.0,
         "etc_input": None,
@@ -43,7 +43,7 @@ def mapper_shorttext(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     order = data_answer["order"]
     body = data_blueprint["contents"]["body"][order - 1]
     mapping = {
-        "answered_text": data_answer["answer"],
+        "answered_text": str(data_answer["answer"]),
         "created_at": unix_time,
         "duration": 1.0,
         "etc_input": None,
@@ -64,15 +64,45 @@ def mapper_shorttext(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     }
     return mapping
 
-def mapper_radio_image_selections(data_blueprint, data_answer,  data_excel, unix_time, uuid):
-    print('mapper_radio_image_selections')
-    return {}
+def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix_time, uuid):
+    order = data_answer["order"]
+    body = data_blueprint["contents"]["body"][order - 1]
+    selections = body["body"]
+    image_selections = body["image_selections"]
+    has_etc = False
+    is_etc = False
+    if "기타:" in selections:
+        has_etc = True
+    if not data_answer["answer"] in selections:
+        is_etc = True
+    mapping = {
+        "answered_text": str(data_answer["answer"]),
+        "created_at": unix_time,
+        "duration": 1.0,
+        "etc_input": None,
+        "finished_at": unix_time + 1.0,
+        "has_etc": has_etc,
+        "image_selections" : image_selections,
+        "is_etc": is_etc,
+        "metadata": {},
+        "phone": "01000000000",
+        "question_order": order,
+        "question_text": body["title"],
+        "question_type": "radio",
+        "selections": selections,
+        "started_at": unix_time,
+        "survey_id": data_blueprint["surveyId"],
+        "user_key": "",
+        "uuid": uuid,
+        "version": data_blueprint["version"]
+    }
+    return mapping
 
 def change_time_format(local_time):
  
     # str_time = '2016-04-25 13:03:17'
     str_time = local_time
-    in_time = time.strptime(str_time,'%Y-%m-%d %H:%M:%S')
+    in_time = time.strptime(str_time,'%Y-%m-%d %H:%M:%S.%f')
     unix_time = time.mktime(in_time)
     
     return unix_time
@@ -109,14 +139,14 @@ if __name__ == '__main__':
     data_content = data_blueprint['contents']
     FILE_PATH = './test_code_data.xlsx'
     data_excel = pd.read_excel(FILE_PATH)
-    unix_time = change_time_format('2020-10-25 13:03:18')
-    data_answer ={
-        "order" : 1,
-        "answer": "브랜디"
+    unix_time = change_time_format('2020-11-04 11:03:29.053000')
+    # data_answer ={
+    #     "order" : 1,
+    #     "answer": "브랜디"
 
-    }
-    uuid = "uuid"
+    # }
+    # uuid = "uuid"
     
-    mapping = mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid)
-    print(mapping)
+    # mapping = mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid)
+    print(unix_time)
     
