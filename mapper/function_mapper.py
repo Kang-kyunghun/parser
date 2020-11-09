@@ -4,22 +4,26 @@ import pandas as pd
 from math import isnan
 from uuid import uuid4
 
-# len(data_excel) :  row의 길이
-# len(data_excel.columns) :column의 길이
-# data_excel.values[row] : 1명이 답한 모든 답
+
 def mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     answer = data_answer["answer"]
+    if str(type(answer)) == "<class 'float'>" :
+        answer = ""
     order = data_answer["order"] -1
     body = data_blueprint["contents"]["body"][order]
     selections = body["body"]
     has_etc = False
     is_etc = False
     etc_input = None
+    
     if "기타:" in selections:
         has_etc = True
-    if not data_answer["answer"] in selections:
-        is_etc = True
-        etc_input = data_answer["answer"]
+   
+    if answer:
+        if not data_answer["answer"] in selections:
+            is_etc = True
+            etc_input = data_answer["answer"]
+    
     mapping = {
         "answered_text": str(answer),
         "created_at": unix_time,
@@ -43,10 +47,14 @@ def mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     return mapping
 
 def mapper_shorttext(data_blueprint, data_excel, data_answer,  unix_time, uuid):
+    answer = data_answer["answer"]
+    if str(type(answer)) == "<class 'float'>" :
+        answer = ""
     order = data_answer["order"] -1
     body = data_blueprint["contents"]["body"][order]
+    
     mapping = {
-        "answered_text": str(data_answer["answer"]),
+        "answered_text": str(answer),
         "created_at": unix_time,
         "duration": 1.0,
         "etc_input": None,
@@ -69,7 +77,7 @@ def mapper_shorttext(data_blueprint, data_excel, data_answer,  unix_time, uuid):
 
 def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     answer = data_answer["answer"]
-    if str(type(answer)) != "<class 'str'>" :
+    if str(type(answer)) == "<class 'float'>" :
         answer = ""
     order = data_answer["order"] -1
     body = data_blueprint["contents"]["body"][order]
@@ -78,6 +86,7 @@ def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix
     has_etc = False
     is_etc = False
     etc_input = None
+    
     if "기타:" in selections:
         has_etc = True
         
@@ -85,6 +94,7 @@ def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix
         if not data_answer["answer"] in selections:
             is_etc = True
             etc_input = data_answer["answer"]
+    
     mapping = {
         "answered_text": str(answer),
         "created_at": unix_time,
@@ -115,13 +125,13 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     has_etc = False
     is_etc = False
     etc_input = None
+    
     if "기타:" in selections:
         has_etc = True
     
-    if str(type(data_answer["answer"])) != "<class 'str'>" :
+    if str(type(data_answer["answer"])) == "<class 'float'>" :
         answered_text = ''
     else:
-        print(type(data_answer["answer"]))
         answers = data_answer["answer"].split(', ')
      
         for answer in answers:
@@ -132,7 +142,7 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
         answered_text = ','.join(answers) if not etc_input else ','.join(answers) + '|' + etc_input
    
     mapping = {
-        "answered_text": answered_text,
+        "answered_text": str(answered_text),
         "created_at": unix_time,
         "duration": 1.0,
         "etc_input": etc_input,
