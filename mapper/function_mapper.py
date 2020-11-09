@@ -3,6 +3,7 @@ import time
 import pandas as pd
 from math import isnan
 from uuid import uuid4
+from utils import change_time_format
 
 
 def mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid):
@@ -165,12 +166,6 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     }
     return mapping
 
-def change_time_format(local_time):
-    str_time = local_time
-    in_time = time.strptime(str_time,'%Y-%m-%d %H:%M:%S.%f')
-    unix_time = time.mktime(in_time)
-    
-    return unix_time
 
 
 
