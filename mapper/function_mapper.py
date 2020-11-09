@@ -122,6 +122,7 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     order = data_answer["order"] -1
     body = data_blueprint["contents"]["body"][order]
     selections = body["body"]
+    sel_ranges = {"max" : len(selections), "min" : 1}
     has_etc = False
     is_etc = False
     etc_input = None
@@ -154,6 +155,7 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
         "question_order": order,
         "question_text": body["title"],
         "question_type": "check",
+        "sel_ranges" : sel_ranges,
         "selections": selections,
         "started_at": unix_time,
         "survey_id": data_blueprint["surveyId"],
