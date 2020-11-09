@@ -57,6 +57,27 @@ request_data = {
                 "isrequired": True
             },
             {
+                "type": "check",
+                "title": "기술 스택 및 영역은? (중복 선택 가능)",
+                "body": [
+                  "프론트엔드",
+                  "백엔드",
+                  "파이썬",
+                  "자바스크립트",
+                  "장고",
+                  "리액트",
+                  "노드 js",
+                  "기타:"
+                ],
+                "url": "",
+                "isrequired": True,
+                "nid": "Q2",
+                "sel_ranges": {
+                  "max": 5,
+                  "min": 1
+                }
+              },
+            {
                 "type": "radio_image_selections",
                 "title": "현재 기분과 가장 비슷한 것은?",
                 "body": [
@@ -74,6 +95,7 @@ request_data = {
 
                 ],
             },
+            
             ]
         }   
 }
@@ -89,22 +111,26 @@ request_data_check = {
         "googleFormResponseRemoteKey": "엑셀 파일의 s3 remote key",
         "body": [
             {
-        "type": "check",
-        "title": "객관식 복수",
-        "body": [
-          "1",
-          "2",
-          "3",
-          "4",
-          "기타:"
-        ],
-        "url": "",
-        "isrequired": True,
-        "sel_ranges": {
-          "max": 5,
-          "min": 1
-        }
-      }]
+                "type": "check",
+                "title": "기술 스택 및 영역은? (중복 선택 가능)",
+                "body": [
+                  "프론트엔드",
+                  "백엔드",
+                  "파이썬",
+                  "자바스크립트",
+                  "장고",
+                  "리액트",
+                  "노드 js",
+                  "기타:"
+                ],
+                "url": "",
+                "isrequired": True,
+                "nid": "Q2",
+                "sel_ranges": {
+                  "max": 5,
+                  "min": 1
+                }
+              }]
         }   
 }
 

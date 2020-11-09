@@ -97,8 +97,44 @@ def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix
         "version": data_blueprint["version"]
     }
     return mapping
-def mapper_checkt(data_blueprint, data_excel, data_answer,  unix_time, uuid):
-    pass
+
+def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
+    order = data_answer["order"]
+    body = data_blueprint["contents"]["body"][order - 1]
+    selections = body["body"]
+    answers = data_answer["answer"].split(', ')
+    etc = ''
+    has_etc = False
+    is_etc = False
+    if "기타:" in selections:
+        has_etc = True
+
+    for answer in answers:
+        if not answer in selections:
+            etc = answer
+            is_etc = True
+            answers.remove(etc)
+    mapping = {
+        "answered_text": ','.join(answers) if not etc else ','.join(answers) + '|' + etc,
+        "created_at": unix_time,
+        "duration": 1.0,
+        "etc_input": None,
+        "finished_at": unix_time + 1.0,
+        "has_etc": has_etc,
+        "is_etc": is_etc,
+        "metadata": {},
+        "phone": "01000000000",
+        "question_order": order,
+        "question_text": body["title"],
+        "question_type": "radio",
+        "selections": selections,
+        "started_at": unix_time,
+        "survey_id": data_blueprint["surveyId"],
+        "user_key": "",
+        "uuid": uuid,
+        "version": data_blueprint["version"]
+    }
+    return mapping
 
 def change_time_format(local_time):
  
@@ -137,18 +173,18 @@ def change_time_format(local_time):
 if __name__ == '__main__':
     
     
-    data_blueprint = request_data.request_data_radio
+    data_blueprint = request_data.request_data_check
     data_content = data_blueprint['contents']
     FILE_PATH = './test_code_data.xlsx'
     data_excel = pd.read_excel(FILE_PATH)
     unix_time = change_time_format('2020-11-04 11:03:29.053000')
-    # data_answer ={
-    #     "order" : 1,
-    #     "answer": "브랜디"
+    data_answer ={
+        "order" : 1,
+        "answer": "프론트엔드, 자바스크립트, 리액트, RN"
 
-    # }
-    # uuid = "uuid"
+    }
+    uuid = "uuid"
     
-    # mapping = mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid)
-    print(unix_time)
+    mapping = mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid)
+    print(mapping)
     

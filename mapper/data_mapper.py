@@ -5,6 +5,7 @@ from math import isnan
 from uuid import uuid4
 
 from function_mapper import (mapper_radio,
+                             mapper_check,
                              mapper_radio_image_selections,
                              mapper_shorttext,
                              change_time_format)
@@ -29,7 +30,7 @@ for question in data_content['body']:
 # len(data_excel.columns) :column의 길이
 # data_excel.values[row] : 1명이 답한 모든 답
 answers_all = data_excel.values
-for ansewrs_person in answers_all:
+for ansewrs_person in answers_all[:1]:
     print(ansewrs_person[0])
     unix_time = change_time_format(str(ansewrs_person[0]))
     result = {}
@@ -40,6 +41,8 @@ for ansewrs_person in answers_all:
                 "answer" : ansewrs_person[index],
                 "order"  : index
             }
+        print(titles)
+        print(type_dict)
         question_type = type_dict[index]
         
         if question_type == 'radio':
@@ -52,6 +55,10 @@ for ansewrs_person in answers_all:
         
         elif question_type == 'radio_image_selections':
             question_data = mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix_time, uuid)
+            response_data.append(question_data)
+
+        elif question_type == 'check':
+            question_data = mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid)
             response_data.append(question_data)
     
     result = {
