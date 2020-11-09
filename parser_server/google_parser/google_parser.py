@@ -127,7 +127,7 @@ def google_form(url):
                         blueprint.append(
                         {
                             "type": types,
-                            "title": grid_title_template.format(title1=title.rstrip("*"), title2=i.text),
+                            "title": grid_title_template.format(title1=title.rstrip(" *"), title2=i.text),
                             "body": row,
                             "image_selections": image_selections,
                             "url": url,
@@ -143,7 +143,7 @@ def google_form(url):
                         blueprint.append(
                         {
                             "type": types,
-                            "title": grid_title_template.format(title1=title.rstrip("*"), title2=i.text),
+                            "title": grid_title_template.format(title1=title.rstrip(" *"), title2=i.text),
                             "body": row,
                             "image_selections": image_selections,
                             "url": url,
