@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
-grid_title_template = "{title1}[{title2}]"
+grid_title_template = "{title1} [{title2}]"
 
 def google_form(url):
     options = webdriver.ChromeOptions()
