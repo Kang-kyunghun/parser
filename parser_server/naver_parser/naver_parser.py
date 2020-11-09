@@ -6,6 +6,8 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
 
+grid_title_template = "{title1} [{title2}]"
+
 def naver_form(url):
     options = webdriver.ChromeOptions()
     options.add_argument('headless')
@@ -128,7 +130,7 @@ def naver_form(url):
                 result.append(
                 {
                     "type": question_type,
-                    "title": title + ' ' + data.text,
+                    "title": grid_title_template.format(title1=title, title2=data.text),
                     "body": col_selection,
                     "image_selections": image_selections,
                     "url": image,
