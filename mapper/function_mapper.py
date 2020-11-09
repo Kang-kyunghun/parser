@@ -13,15 +13,17 @@ def mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     selections = body["body"]
     has_etc = False
     is_etc = False
+    etc_input = None
     if "기타:" in selections:
         has_etc = True
     if not data_answer["answer"] in selections:
         is_etc = True
+        etc_input = data_answer["answer"]
     mapping = {
         "answered_text": str(data_answer["answer"]),
         "created_at": unix_time,
         "duration": 1.0,
-        "etc_input": None,
+        "etc_input": etc_input,
         "finished_at": unix_time + 1.0,
         "has_etc": has_etc,
         "is_etc": is_etc,
@@ -71,15 +73,17 @@ def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix
     image_selections = body["image_selections"]
     has_etc = False
     is_etc = False
+    etc_input = None
     if "기타:" in selections:
         has_etc = True
     if not data_answer["answer"] in selections:
         is_etc = True
+        etc_input = data_answer["answer"]
     mapping = {
         "answered_text": str(data_answer["answer"]),
         "created_at": unix_time,
         "duration": 1.0,
-        "etc_input": None,
+        "etc_input": etc_input,
         "finished_at": unix_time + 1.0,
         "has_etc": has_etc,
         "image_selections" : image_selections,
@@ -106,19 +110,20 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     etc = ''
     has_etc = False
     is_etc = False
+    etc_input = None
     if "기타:" in selections:
         has_etc = True
 
     for answer in answers:
         if not answer in selections:
-            etc = answer
+            etc_input = answer
             is_etc = True
             answers.remove(etc)
     mapping = {
-        "answered_text": ','.join(answers) if not etc else ','.join(answers) + '|' + etc,
+        "answered_text": ','.join(answers) if not etc else ','.join(answers) + '|' + etc_input,
         "created_at": unix_time,
         "duration": 1.0,
-        "etc_input": None,
+        "etc_input": etc_input,
         "finished_at": unix_time + 1.0,
         "has_etc": has_etc,
         "is_etc": is_etc,
@@ -137,37 +142,12 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     return mapping
 
 def change_time_format(local_time):
- 
-    # str_time = '2016-04-25 13:03:17'
     str_time = local_time
     in_time = time.strptime(str_time,'%Y-%m-%d %H:%M:%S.%f')
     unix_time = time.mktime(in_time)
     
     return unix_time
 
-
-
-
-    # mapping = {
-    #     "answered_text": "선택하면 5번으로 갑니다",
-    #     "created_at": "timestemp",
-    #     "duration": 1,
-    #     "etc_input": null,
-    #     "finished_at": timestemp + 1,
-    #     "has_etc": "문항에 기타가 있는지 확인",
-    #     "is_etc": "기타문항으로 답했는지 확인",
-    #     "metadata": {},
-    #     "phone": "01000000000",
-    #     "question_order": 0 ,
-    #     "question_text": "객관식 단일",
-    #     "question_type": "radio",
-    #     "selections": ["1", "2", "선택하면 5번으로 갑니다", "4",   "기타:"],
-    #     "started_at": "timestemp",
-    #     "survey_id": "613547",
-    #     "user_key": "",
-    #     "uuid": "8c2f3563-b70d-476a-9c63-a5cb54efb672",
-    #     "version": 2
-    # }
 
 
 if __name__ == '__main__':
