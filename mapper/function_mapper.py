@@ -8,8 +8,8 @@ from uuid import uuid4
 # len(data_excel.columns) :column의 길이
 # data_excel.values[row] : 1명이 답한 모든 답
 def mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid):
-    order = data_answer["order"]
-    body = data_blueprint["contents"]["body"][order - 1]
+    order = data_answer["order"] -1
+    body = data_blueprint["contents"]["body"][order]
     selections = body["body"]
     has_etc = False
     is_etc = False
@@ -40,8 +40,8 @@ def mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     return mapping
 
 def mapper_shorttext(data_blueprint, data_excel, data_answer,  unix_time, uuid):
-    order = data_answer["order"]
-    body = data_blueprint["contents"]["body"][order - 1]
+    order = data_answer["order"] -1
+    body = data_blueprint["contents"]["body"][order]
     mapping = {
         "answered_text": str(data_answer["answer"]),
         "created_at": unix_time,
@@ -65,8 +65,8 @@ def mapper_shorttext(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     return mapping
 
 def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix_time, uuid):
-    order = data_answer["order"]
-    body = data_blueprint["contents"]["body"][order - 1]
+    order = data_answer["order"] -1
+    body = data_blueprint["contents"]["body"][order]
     selections = body["body"]
     image_selections = body["image_selections"]
     has_etc = False
@@ -99,8 +99,8 @@ def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix
     return mapping
 
 def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
-    order = data_answer["order"]
-    body = data_blueprint["contents"]["body"][order - 1]
+    order = data_answer["order"] -1
+    body = data_blueprint["contents"]["body"][order]
     selections = body["body"]
     answers = data_answer["answer"].split(', ')
     etc = ''

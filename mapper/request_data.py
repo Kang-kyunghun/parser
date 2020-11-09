@@ -57,6 +57,26 @@ request_data = {
                 "isrequired": True
             },
             {
+                "type": "radio",
+                "title": "해당 하는 것을 선택해주세요 [30대다]",
+                "body": [
+                "예",
+                "아니오"
+                ],
+                "url": "",
+                "isrequired": True
+            },
+            {
+                "type": "radio",
+                "title": "해당 하는 것을 선택해주세요 [직장인이다]",
+                "body": [
+                "예",
+                "아니오"
+                ],
+                "url": "",
+                "isrequired": True
+            },
+            {
                 "type": "check",
                 "title": "기술 스택 및 영역은? (중복 선택 가능)",
                 "body": [

@@ -13,7 +13,7 @@ from function_mapper import (mapper_radio,
 
 data_blueprint = request_data.request_data
 data_content = data_blueprint['contents']
-FILE_PATH = './test_code_data.xlsx'
+FILE_PATH = './test_code_data2.xlsx'
 data_excel = pd.read_excel(FILE_PATH)
 
 #설문 전체 문항들 제목 list
@@ -31,7 +31,6 @@ for question in data_content['body']:
 # data_excel.values[row] : 1명이 답한 모든 답
 answers_all = data_excel.values
 for ansewrs_person in answers_all[:1]:
-    print(ansewrs_person[0])
     unix_time = change_time_format(str(ansewrs_person[0]))
     result = {}
     response_data = []
@@ -41,8 +40,6 @@ for ansewrs_person in answers_all[:1]:
                 "answer" : ansewrs_person[index],
                 "order"  : index
             }
-        print(titles)
-        print(type_dict)
         question_type = type_dict[index]
         
         if question_type == 'radio':
