@@ -7,6 +7,8 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
+grid_title_template = "{title1}[{title2}]"
+
 def google_form(url):
     options = webdriver.ChromeOptions()
     options.add_argument('headless')
@@ -125,7 +127,7 @@ def google_form(url):
                         blueprint.append(
                         {
                             "type": types,
-                            "title": title.rstrip("*") + " " + i.text,
+                            "title": grid_title_template.format(title1=title.rstrip("*"), title2=i.text),
                             "body": row,
                             "image_selections": image_selections,
                             "url": url,
@@ -141,7 +143,7 @@ def google_form(url):
                         blueprint.append(
                         {
                             "type": types,
-                            "title": title.rstrip("*") + " " + i.text,
+                            "title": grid_title_template.format(title1=title.rstrip("*"), title2=i.text),
                             "body": row,
                             "image_selections": image_selections,
                             "url": url,
