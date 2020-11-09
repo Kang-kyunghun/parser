@@ -7,6 +7,7 @@ from uuid import uuid4
 from function_mapper import (mapper_radio,
                              mapper_check,
                              mapper_radio_image_selections,
+                             mapper_radio_image_selections,
                              mapper_shorttext,
                              change_time_format)
 
