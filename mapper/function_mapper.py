@@ -8,6 +8,7 @@ from uuid import uuid4
 # len(data_excel.columns) :column의 길이
 # data_excel.values[row] : 1명이 답한 모든 답
 def mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid):
+    answer = data_answer["answer"]
     order = data_answer["order"] -1
     body = data_blueprint["contents"]["body"][order]
     selections = body["body"]
@@ -20,7 +21,7 @@ def mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid):
         is_etc = True
         etc_input = data_answer["answer"]
     mapping = {
-        "answered_text": str(data_answer["answer"]),
+        "answered_text": str(answer),
         "created_at": unix_time,
         "duration": 1.0,
         "etc_input": etc_input,
@@ -67,6 +68,9 @@ def mapper_shorttext(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     return mapping
 
 def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix_time, uuid):
+    answer = data_answer["answer"]
+    if str(type(answer)) != "<class 'str'>" :
+        answer = ""
     order = data_answer["order"] -1
     body = data_blueprint["contents"]["body"][order]
     selections = body["body"]
@@ -76,11 +80,13 @@ def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix
     etc_input = None
     if "기타:" in selections:
         has_etc = True
-    if not data_answer["answer"] in selections:
-        is_etc = True
-        etc_input = data_answer["answer"]
+        
+    if answer :
+        if not data_answer["answer"] in selections:
+            is_etc = True
+            etc_input = data_answer["answer"]
     mapping = {
-        "answered_text": str(data_answer["answer"]),
+        "answered_text": str(answer),
         "created_at": unix_time,
         "duration": 1.0,
         "etc_input": etc_input,
@@ -92,7 +98,7 @@ def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix
         "phone": "01000000000",
         "question_order": order,
         "question_text": body["title"],
-        "question_type": "radio",
+        "question_type": "radio_image_selections",
         "selections": selections,
         "started_at": unix_time,
         "survey_id": data_blueprint["surveyId"],
@@ -106,21 +112,27 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     order = data_answer["order"] -1
     body = data_blueprint["contents"]["body"][order]
     selections = body["body"]
-    answers = data_answer["answer"].split(', ')
-    etc = ''
     has_etc = False
     is_etc = False
     etc_input = None
     if "기타:" in selections:
         has_etc = True
-
-    for answer in answers:
-        if not answer in selections:
-            etc_input = answer
-            is_etc = True
-            answers.remove(etc)
+    
+    if str(type(data_answer["answer"])) != "<class 'str'>" :
+        answered_text = ''
+    else:
+        print(type(data_answer["answer"]))
+        answers = data_answer["answer"].split(', ')
+     
+        for answer in answers:
+            if not answer in selections:
+                etc_input = answer
+                is_etc = True
+                answers.remove(etc_input)
+        answered_text = ','.join(answers) if not etc_input else ','.join(answers) + '|' + etc_input
+   
     mapping = {
-        "answered_text": ','.join(answers) if not etc else ','.join(answers) + '|' + etc_input,
+        "answered_text": answered_text,
         "created_at": unix_time,
         "duration": 1.0,
         "etc_input": etc_input,
@@ -131,7 +143,7 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
         "phone": "01000000000",
         "question_order": order,
         "question_text": body["title"],
-        "question_type": "radio",
+        "question_type": "check",
         "selections": selections,
         "started_at": unix_time,
         "survey_id": data_blueprint["surveyId"],
