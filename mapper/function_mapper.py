@@ -106,16 +106,15 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
         answered_text = ''    
     else:
         answers = data_answer["answer"].split(', ')
-        print(answers)
         etc_answers = []
+        
         for answer in answers:
             if not answer in selections:
                 etc_answers.append(answer)
         answers = answers[:-len(etc_answers)] if etc_answers else answers
-        print(answers)
-        etc_input = str(etc_answers)[1:-1] if etc_answers else None
-        print(etc_input)
+        etc_input = str(etc_answers)[1:-1].replace("'", "") if etc_answers else None
         sel_order = []
+        
         if answers:
             for answer in answers:
                 sel_order.append(str(selections.index(answer)+1))
@@ -161,21 +160,27 @@ def mapper_check_image_selections(data_blueprint, data_excel, data_answer,  unix
     
     if "기타:" in selections:
         has_etc = True
-    
+
     if str(type(data_answer["answer"])) == "<class 'float'>" :
-        answered_text = ''
+        answered_text = ''    
     else:
         answers = data_answer["answer"].split(', ')
-        sel_order = []
+        etc_answers = []
         
         for answer in answers:
             if not answer in selections:
-                etc_input = answer
-                is_etc = True
-                answers.remove(etc_input)
-                sel_order.append(str(selections.index("기타:")))
-            else:
+                etc_answers.append(answer)
+        answers = answers[:-len(etc_answers)] if etc_answers else answers
+        etc_input = str(etc_answers)[1:-1].replace("'", "") if etc_answers else None
+        sel_order = []
+        
+        if answers:
+            for answer in answers:
                 sel_order.append(str(selections.index(answer)+1))
+        
+        if etc_input:
+                is_etc = True
+                sel_order.append(str(selections.index("기타:")+1))
         
         answered_text = ','.join(sel_order) if not etc_input else ','.join(sel_order) + '|' + etc_input
     
