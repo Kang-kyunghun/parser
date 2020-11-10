@@ -106,19 +106,24 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
         answered_text = ''    
     else:
         answers = data_answer["answer"].split(', ')
-        sel_order = []
-        
+        etc_answers = []
         for answer in answers:
             if not answer in selections:
-                etc_input = answer
-                is_etc = True
-                answers.remove(etc_input)
-                sel_order.append(str(selections.index("기타:")))
-            else:
+                etc_answers.append(answer)
+        answers = answers[:-len(etc_answers)]
+        etc_input = str(etc_answers)[1:-1] if etc_answers else None
+        print(etc_input)
+        sel_order = []
+        if answers:
+            for answer in answers:
                 sel_order.append(str(selections.index(answer)+1))
         
+        if etc_input:
+                is_etc = True
+                sel_order.append(str(selections.index("기타:")+1))
+        
         answered_text = ','.join(sel_order) if not etc_input else ','.join(sel_order) + '|' + etc_input
-
+        
     mapping = {
         "answered_text": str(answered_text),
         "created_at": unix_time,
