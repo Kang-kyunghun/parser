@@ -23,13 +23,6 @@ data_excel = matching_data(data_content['body'], pd.read_excel(FILE_PATH))
 titles = list(data_excel.columns)
 type_dict = matching_type(data_content['body'], data_excel)
 
-for question in data_content['body']:
-    for index in range(1,len(titles)):
-        if titles[index] == question['title']:
-        
-            type_dict[index] = question['type']
-            break
-
 # len(data_excel) :  row의 길이
 # len(data_excel.columns) :column의 길이
 # data_excel.values[row] : 1명이 답한 모든 답
