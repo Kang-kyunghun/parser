@@ -106,11 +106,13 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
         answered_text = ''    
     else:
         answers = data_answer["answer"].split(', ')
+        print(answers)
         etc_answers = []
         for answer in answers:
             if not answer in selections:
                 etc_answers.append(answer)
-        answers = answers[:-len(etc_answers)]
+        answers = answers[:-len(etc_answers)] if etc_answers else answers
+        print(answers)
         etc_input = str(etc_answers)[1:-1] if etc_answers else None
         print(etc_input)
         sel_order = []
