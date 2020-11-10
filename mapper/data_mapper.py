@@ -7,10 +7,11 @@ from uuid import uuid4
 from function_mapper import (mapper_radio,
                              mapper_check,
                              mapper_radio_image_selections,
+                             mapper_check_image_selections,
                              mapper_shorttext)
 
 from utils import change_time_format
-
+                             
 
 data_blueprint = request_data.request_data
 data_content = data_blueprint['contents']
