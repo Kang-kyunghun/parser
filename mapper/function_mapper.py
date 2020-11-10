@@ -98,22 +98,27 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     has_etc = False
     is_etc = False
     etc_input = None
-    
+
     if "기타:" in selections:
         has_etc = True
-    
+
     if str(type(data_answer["answer"])) == "<class 'float'>" :
-        answered_text = ''
+        answered_text = ''    
     else:
         answers = data_answer["answer"].split(', ')
-     
+        sel_order = []
+        
         for answer in answers:
             if not answer in selections:
                 etc_input = answer
                 is_etc = True
                 answers.remove(etc_input)
-        answered_text = ','.join(answers) if not etc_input else ','.join(answers) + '|' + etc_input
-   
+                sel_order.append(str(selections.index("기타:")))
+            else:
+                sel_order.append(str(selections.index(answer)+1))
+        
+        answered_text = ','.join(sel_order) if not etc_input else ','.join(sel_order) + '|' + etc_input
+
     mapping = {
         "answered_text": str(answered_text),
         "created_at": unix_time,
@@ -154,13 +159,18 @@ def mapper_check_image_selections(data_blueprint, data_excel, data_answer,  unix
         answered_text = ''
     else:
         answers = data_answer["answer"].split(', ')
-     
+        sel_order = []
+        
         for answer in answers:
             if not answer in selections:
                 etc_input = answer
                 is_etc = True
                 answers.remove(etc_input)
-        answered_text = ','.join(answers) if not etc_input else ','.join(answers) + '|' + etc_input
+                sel_order.append(str(selections.index("기타:")))
+            else:
+                sel_order.append(str(selections.index(answer)+1))
+        
+        answered_text = ','.join(sel_order) if not etc_input else ','.join(sel_order) + '|' + etc_input
     
     mapping = {
         "answered_text": str(answered_text),
@@ -215,15 +225,6 @@ def mapper_shorttext(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     }
     return mapping
 
-def change_time_format(local_time):
-    str_time = local_time
-    in_time = time.strptime(str_time,'%Y-%m-%d %H:%M:%S.%f')
-    unix_time = time.mktime(in_time)
-    
-    return unix_time
-
-
-
 if __name__ == '__main__':
     
     
@@ -239,6 +240,6 @@ if __name__ == '__main__':
     }
     uuid = "uuid"
     
-    mapping = mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid)
+    mapping = mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid)#mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid)
     print(mapping)
     
