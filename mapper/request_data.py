@@ -47,10 +47,10 @@ request_data = {
                 "type": "radio",
                 "title": "현재 하고 있는 일은?",
                 "body": [
-                "브랜디",
-                "머치스퀘어",
-                "리베라비트",
-                "위고두팀",
+                "멘토",
+                "1차 프로젝트",
+                "2차 프로젝트",
+                "기업협업",
                 "기타:"
                 ],
                 "url": "https://s3.ap-northeast-2.amazonaws.com/pocketsurvey.earlysloth/images/uu/6f00627a-60ca-4d8b-8989-18589e9a6eb1.png",
@@ -58,6 +58,20 @@ request_data = {
             },
             {
                 "type": "radio",
+                "title": "당신의 나이는?",
+                "body": [
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30 이상"
+                ],
+                "url": "",
+                "isrequired": True
+            },
+            {
+                "type": "check",
                 "title": "해당 하는 것을 선택해주세요 [30대다]",
                 "body": [
                 "예",
@@ -67,7 +81,7 @@ request_data = {
                 "isrequired": True
             },
             {
-                "type": "radio",
+                "type": "check",
                 "title": "해당 하는 것을 선택해주세요 [직장인이다]",
                 "body": [
                 "예",
@@ -78,15 +92,15 @@ request_data = {
             },
             {
                 "type": "check",
-                "title": "기술 스택 및 영역은? (중복 선택 가능)",
+                "title": "다녀와본 나라는? (중복 선택 가능)",
                 "body": [
-                  "프론트엔드",
-                  "백엔드",
-                  "파이썬",
-                  "자바스크립트",
-                  "장고",
-                  "리액트",
-                  "노드 js",
+                  "영국",
+                  "프랑스",
+                  "중국",
+                  "아이슬란드",
+                  "폴란드",
+                  "미국",
+                  "페루",
                   "기타:"
                 ],
                 "url": "",
@@ -98,7 +112,7 @@ request_data = {
                 }
               },
             {
-                "type": "radio_image_selections",
+                "type": "check_image_selections",
                 "title": "현재 기분과 가장 비슷한 것은?",
                 "body": [
                   "졸림",
@@ -115,6 +129,7 @@ request_data = {
 
                 ],
             },
+            
             
             ]
         }   
