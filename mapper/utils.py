@@ -1,9 +1,25 @@
-import request_data
+import json
+import boto3
 import time
 import pandas as pd
-
+import request_data
 from uuid import uuid4
 
+def s3_uploader(result):
+    s3_client = boto3.client(
+        's3',
+        aws_access_key_id = AWS_ACCESS_KEY_ID,
+        aws_secret_access_key = AWS_SECRET_ACCESS_KEY
+    )
+
+    file = json.dumps(result, indent="\t", ensure_ascii=False)
+    googleFormResponse = 'url' #엑셀이 저장된 버킷 주소 받아야됨
+    #googleFormResponse = 
+    s3_client.put_object(
+        Body=str(file),
+        Bucket="upload-data-jack",
+        Key=f"{result['surveyId']}/{googleFormResponse}__{result['surveyId']}__{result['version']}__{result['responseData'][0]['uuid']}.json"
+    )
 
 def change_time_format(local_time):
     str_time = local_time
