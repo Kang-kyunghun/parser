@@ -1,6 +1,7 @@
 import json
 import requests
 import boto3
+import django_rq
 import pandas       as pd
 
 from django.http    import JsonResponse
@@ -17,7 +18,11 @@ class DataMappingView(View):
         address_s3 = data_blueprint["googleFormResponseRemoteKey"] 
         
         get_excel = pd.read_excel(address_s3)
-        data_mapper(get_excel, data_blueprint)
+        
+        q = django_rq.get_queue('default')
+        q.enqueue(data_mapper, get_excel, data_blueprint)
+        # data_mapper(get_excel, data_blueprint)
+        
         result = "OK"
         return JsonResponse({'message':result}, status=200)
         

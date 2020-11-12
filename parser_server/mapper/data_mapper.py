@@ -2,7 +2,7 @@ import pandas as pd
 import json
 from math import isnan
 from uuid import uuid4
-
+from django_rq import job
 from .function_mapper import (mapper_radio,
                              mapper_check,
                              mapper_radio_image_selections,
