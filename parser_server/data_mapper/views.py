@@ -11,29 +11,7 @@ from django.views       import View
 from mapper.data_mapper import data_mapper
 
 class DataMappingView(View):
-
-    # def post(self, request):
-    #     #실제 데이터 구조랑 맞춰봐야 됨 (엑셀 받는 주소 때문) 
-        
-    #     data_blueprint = json.loads(request.body)
-    #     address_s3 = data_blueprint["googleFormResponseRemoteKey"] 
-        
-    #     get_excel = pd.read_excel(address_s3)
-        
-    #     q = django_rq.get_queue('default')
-    #     q.enqueue(data_mapper, get_excel, data_blueprint)
-    #     # data_mapper(get_excel, data_blueprint)
-        
-    #     result = "OK"
-    #     return JsonResponse({'message':result}, status=200)
-        
-    #         # result = "No"
-    #         # return JsonResponse({'message':result}, status=400)
-
-
     def post(self, request):
-       
-
 
         data_blueprint = json.loads(request.body)
         address_s3 = data_blueprint["googleFormResponseRemoteKey"] 
@@ -41,25 +19,18 @@ class DataMappingView(View):
         get_excel = pd.read_excel(address_s3)
        
         blueprint_content = data_blueprint['contents']
-        
-        # filename = address_s3.split('/')[-1]
-        # filesave = requests.get(address_s3, allow_redirects=True)
-        # with open(f'{filename}', 'wb') as local_file:
-        #     local_file.write(filesave.content)
-        
-        # 엑셀 파일 읽기
-        # get_excel = pd.read_excel(f'{filename}')
-        k = pd.DataFrame(get_excel)
-        excel_body_data = k.values
+    
+        data_excel = pd.DataFrame(get_excel)
+        excel_body_data = data_excel.values
         excel_titles = list(get_excel.columns)
 
         try:
             blueprint_titles = []
-            blueprint_body = []
+            # blueprint_body = []
             excel_answer = list(get_excel.iloc)
 
-            for i in blueprint_content['body']:
-                blueprint_titles.append(i['title'])
+            for blueprint_body in blueprint_content['body']:
+                blueprint_titles.append(blueprint_body['title'])
 
             for blueprint_title in blueprint_titles:
                 if blueprint_title not in excel_titles:
@@ -88,8 +59,10 @@ class DataMappingView(View):
                         for answer in excel_header_data:
                             if answer not in blueprint_body['body']:
                                 return JsonResponse({'status': '답변이 일치하지 않습니다'}, status=200)
+            
             q = django_rq.get_queue('default')
-            q.enqueue(data_mapper, get_excel, data_blueprint)
+            q.empty()
+            q.enqueue(data_mapper, get_excel, data_blueprint, result_ttl=30)
             return JsonResponse({'status': 'SUCCESS'}, status=200)
  
         except KeyError:

@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'django_rq',
     'data_mapper',
     'project',
-    'parserdata',
 ]
 
 MIDDLEWARE = [

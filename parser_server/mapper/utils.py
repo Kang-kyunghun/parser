@@ -14,13 +14,11 @@ def s3_uploader(result):
     )
 
     file = json.dumps(result, indent="\t", ensure_ascii=False)
-    googleFormResponse = 'url' #엑셀이 저장된 버킷 주소 받아야됨
-    #googleFormResponse = 
-    s3_client.put_object(
-        Body=str(file),
-        Bucket="upload-data-jack",
-        Key=f"{result['surveyId']}/{googleFormResponse}__{result['surveyId']}__{result['version']}__{result['responseData'][0]['uuid']}.json"
-    )
+    # googleFormResponse = result["googleFormResponse"] #엑셀이 저장된 버킷 주소 받아야됨
+    test_url = 'kyunghun'
+    # s3_client.put_object(
+    #     Body=str(file),
+    #     Bucket="upload-data-jack")
 
 def change_time_format(local_time):
     str_time = local_time
