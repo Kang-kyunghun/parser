@@ -92,26 +92,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_LOCATION = 'static'
-
-AWS_ACCESS_KEY_ID = 'AKIAXFWNGZ4LDYGGPN73'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'soohyunlee'
-
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {    
-     'CacheControl': 'max-age=86400',
-}
-
-AWS_REGION = 'ap-northeast-2'
-AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
-
-
-
-
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
