@@ -2,30 +2,95 @@ import json
 import requests
 import boto3
 import django_rq
-import pandas       as pd
+import openpyxl
+import pandas           as pd
 
-from django.http    import JsonResponse
-from django.views   import View
+from django.http        import JsonResponse
+from django.views       import View
 
 from mapper.data_mapper import data_mapper
 
 class DataMappingView(View):
 
-    def post(self, request):
-        #실제 데이터 구조랑 맞춰봐야 됨 (엑셀 받는 주소 때문) 
+    # def post(self, request):
+    #     #실제 데이터 구조랑 맞춰봐야 됨 (엑셀 받는 주소 때문) 
         
+    #     data_blueprint = json.loads(request.body)
+    #     address_s3 = data_blueprint["googleFormResponseRemoteKey"] 
+        
+    #     get_excel = pd.read_excel(address_s3)
+        
+    #     q = django_rq.get_queue('default')
+    #     q.enqueue(data_mapper, get_excel, data_blueprint)
+    #     # data_mapper(get_excel, data_blueprint)
+        
+    #     result = "OK"
+    #     return JsonResponse({'message':result}, status=200)
+        
+    #         # result = "No"
+    #         # return JsonResponse({'message':result}, status=400)
+
+
+    def post(self, request):
+       
+
+
         data_blueprint = json.loads(request.body)
         address_s3 = data_blueprint["googleFormResponseRemoteKey"] 
         
         get_excel = pd.read_excel(address_s3)
+       
+        blueprint_content = data_blueprint['contents']
         
-        q = django_rq.get_queue('default')
-        q.enqueue(data_mapper, get_excel, data_blueprint)
-        # data_mapper(get_excel, data_blueprint)
+        # filename = address_s3.split('/')[-1]
+        # filesave = requests.get(address_s3, allow_redirects=True)
+        # with open(f'{filename}', 'wb') as local_file:
+        #     local_file.write(filesave.content)
         
-        result = "OK"
-        return JsonResponse({'message':result}, status=200)
-        
-            # result = "No"
-            # return JsonResponse({'message':result}, status=400)
-    
+        # 엑셀 파일 읽기
+        # get_excel = pd.read_excel(f'{filename}')
+        k = pd.DataFrame(get_excel)
+        excel_body_data = k.values
+        excel_titles = list(get_excel.columns)
+
+        try:
+            blueprint_titles = []
+            blueprint_body = []
+            excel_answer = list(get_excel.iloc)
+
+            for i in blueprint_content['body']:
+                blueprint_titles.append(i['title'])
+
+            for blueprint_title in blueprint_titles:
+                if blueprint_title not in excel_titles:
+                    return JsonResponse({'status': '문항 제목이 일치하지 않습니다.'}, status=400)
+
+            # 타임스탬프 외에 데이터가 전혀 없으면 에러
+            count = 0
+            for row in range(len(excel_answer)):
+                for col in range(1,len(excel_titles)):
+                    if str(excel_body_data[row][col]) != 'nan':
+                        break
+                    count += 1
+            if count == (len(excel_answer) * (len(excel_titles)-1)):
+                return JsonResponse({'status': '엑셀 데이터가 없습니다.'}, status=400)
+            
+            # 문항 제목이 같을 때 blueprint 옵션에 '기타'항목 여부 확인
+            for blueprint_body in blueprint_content['body']:
+                if blueprint_body['type'] == 'check' or blueprint_body['type'] == 'radio':
+                    
+                    if '기타:' not in blueprint_body['body']:
+                        excel_header_data = []
+                        for n in get_excel[blueprint_body['title']]:
+                            if str(n) != 'nan':
+                                excel_header_data.append(n)
+                        print('excel_header_data : ',excel_header_data)
+                        for answer in excel_header_data:
+                            if answer not in blueprint_body['body']:
+                                return JsonResponse({'status': '답변이 일치하지 않습니다'}, status=200)
+            q = django_rq.get_queue('default')
+            q.enqueue(data_mapper, get_excel, data_blueprint)
+            return JsonResponse({'status': 'SUCCESS'}, status=200)
+ 
+        except KeyError:
+            return JsonResponse({'message': 'KEY_ERROR'}, status = 400)
