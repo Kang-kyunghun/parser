@@ -26,6 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'django_rq',
+    'data_mapper',
+    'project',
 ]
 
 MIDDLEWARE = [
@@ -90,6 +93,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -134,3 +138,24 @@ CORS_ALLOW_HEADERS = (
     'x-csrftoken',
     'x-requested-with',
 )
+
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379", # 1번 DB 사용
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+# Django-RQ Configuration
+RQ_QUEUES = {
+    "default": {"HOST": "localhost", 
+                "PORT": 6379,
+                "DB": 0, 
+                "DEFAULT_TIMEOUT": 360,},
+}
+
+DJANGO_SETTINGS_MODULE = 'settings rqworker high default low'

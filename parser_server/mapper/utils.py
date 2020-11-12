@@ -1,24 +1,26 @@
+from .request_data import request_data
 import json
 import boto3
 import time
 import pandas as pd
-import request_data
+
 from uuid import uuid4
 
 def s3_uploader(result):
     s3_client = boto3.client(
         's3',
-        aws_access_key_id = AWS_ACCESS_KEY_ID,
-        aws_secret_access_key = AWS_SECRET_ACCESS_KEY
+        aws_access_key_id = "AKIA4GNBIORVQUCH5EQM",#AWS_ACCESS_KEY_ID,
+        aws_secret_access_key = "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"# AWS_SECRET_ACCESS_KEY
     )
 
     file = json.dumps(result, indent="\t", ensure_ascii=False)
-    googleFormResponse = 'url' #엑셀이 저장된 버킷 주소 받아야됨
-    #googleFormResponse = 
+    # googleFormResponse = result["googleFormResponse"] #엑셀이 저장된 버킷 주소 받아야됨
+    test_url = 'kyunghun'
     s3_client.put_object(
         Body=str(file),
         Bucket="upload-data-jack",
-        Key=f"{result['surveyId']}/{googleFormResponse}__{result['surveyId']}__{result['version']}__{result['responseData'][0]['uuid']}.json"
+        Key=f"{result['responseData'][0]['uuid']}.json"
+        # Key=f"{result['surveyId']}/why__{result['surveyId']}__{result['version']}__{result['responseData'][0]['uuid']}.json"
     )
 
 def change_time_format(local_time):
@@ -61,11 +63,3 @@ def matching_data(body_blueprint, data_excel):
         del data_excel[unmatched_data]
     data_excel = data_excel[['타임스탬프']+titles_blueprint]
     return data_excel
-
-if __name__ == '__main__':
-    
-    data_blueprint = request_data.request_data
-    data_content = data_blueprint['contents']
-    FILE_PATH = './edited_test_data.xlsx'
-    data_excel = matching_data(data_content['body'], pd.read_excel(FILE_PATH))
-    print(list(data_excel.columns))

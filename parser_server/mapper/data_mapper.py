@@ -1,22 +1,23 @@
-import request_data
 import pandas as pd
 import json
 from math import isnan
 from uuid import uuid4
-
-from function_mapper import (mapper_radio,
+from django_rq import job
+from .function_mapper import (mapper_radio,
                              mapper_check,
                              mapper_radio_image_selections,
                              mapper_check_image_selections,
                              mapper_shorttext)
 
-from utils import change_time_format, matching_data, matching_type, s3_uploader
+from .utils import change_time_format, matching_data, matching_type, s3_uploader
 
 def data_mapper(get_excel, data_blueprint):
    
     data_blueprint_body = data_blueprint['contents']['body']
+    
     data_excel = matching_data(data_blueprint_body, get_excel)
     type_dict = matching_type( data_blueprint_body, data_excel)
+    
     answers_all = data_excel.values
 
     # len(data_excel) :  row의 길이
@@ -64,10 +65,3 @@ def data_mapper(get_excel, data_blueprint):
         }
     
         s3_uploader(result)
-
-if __name__ == '__main__':
-    data_blueprint = request_data.request_data
-    FILE_PATH = './edited_test_data.xlsx'
-    get_excel = pd.read_excel(FILE_PATH)
-
-    data_mapper(get_excel, data_blueprint)

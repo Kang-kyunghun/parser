@@ -1,9 +1,8 @@
-import request_data
 import time
 import pandas as pd
 from math import isnan
 from uuid import uuid4
-from utils import change_time_format
+from .utils import change_time_format
 
 
 def mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid):
@@ -236,22 +235,4 @@ def mapper_shorttext(data_blueprint, data_excel, data_answer,  unix_time, uuid):
         "version": data_blueprint["version"]
     }
     return mapping
-
-if __name__ == '__main__':
-    
-    
-    data_blueprint = request_data.request_data_check
-    data_content = data_blueprint['contents']
-    FILE_PATH = './test_code_data.xlsx'
-    data_excel = pd.read_excel(FILE_PATH)
-    unix_time = change_time_format('2020-11-04 11:03:29.053000')
-    data_answer ={
-        "order" : 1,
-        "answer": "프론트엔드, 자바스크립트, 리액트, RN"
-
-    }
-    uuid = "uuid"
-    
-    mapping = mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid)#mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid)
-    print(mapping)
     
