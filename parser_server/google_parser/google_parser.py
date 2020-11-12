@@ -162,5 +162,8 @@ def google_form(url):
         contents = {
                 "body" : []
         }
-        driver.quit()
-        return contents
+
+    driver.quit()
+
+    return contents
+

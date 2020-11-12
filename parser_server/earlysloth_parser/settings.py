@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django_rq',
     'data_mapper',
     'project',
+    'parserdata',
 ]
 
 MIDDLEWARE = [
@@ -91,6 +92,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 
 # Internationalization
