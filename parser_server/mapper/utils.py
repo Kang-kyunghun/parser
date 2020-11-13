@@ -49,7 +49,7 @@ def matching_data(body_blueprint, data_excel):
     unmatched_titles = list(titles_excel[1:])
     titles_blueprint = []
     for body in data_bodies:
-            titles_blueprint.append(body['title'])
+        titles_blueprint.append(body['title'])
     
     for title_excel in titles_excel[1:]:
         for title_blueprint in titles_blueprint:
