@@ -9,7 +9,7 @@ from django.http        import JsonResponse
 from django.views       import View
 
 from mapper.data_mapper import data_mapper
-
+from mapper.exception   import exception_title
 class DataMappingView(View):
     def post(self, request):
 
@@ -23,18 +23,10 @@ class DataMappingView(View):
         data_excel = pd.DataFrame(get_excel)
         excel_body_data = data_excel.values
         excel_titles = list(get_excel.columns)
-
+        excel_answer = list(get_excel.iloc)
         try:
-            blueprint_titles = []
-            # blueprint_body = []
-            excel_answer = list(get_excel.iloc)
-
-            for blueprint_body in blueprint_content['body']:
-                blueprint_titles.append(blueprint_body['title'])
-
-            for blueprint_title in blueprint_titles:
-                if blueprint_title not in excel_titles:
-                    return JsonResponse({'status': '문항 제목이 일치하지 않습니다.'}, status=400)
+            if exception_title(data_blueprint, get_excel):
+                return JsonResponse({'status': '문항 제목이 일치하지 않습니다.'}, status=400)
 
             # 타임스탬프 외에 데이터가 전혀 없으면 에러
             count = 0
