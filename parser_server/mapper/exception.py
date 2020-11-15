@@ -41,17 +41,20 @@ def exception_unexpeted_data(data_blueprint, get_excel):
     for body in data_blueprint_body:
         question_type = body['type']
         question_title = body['title']
+        question_selections = body['body']
         if not (p_radio.search(question_type) or p_check.search(question_type)):
            continue
         
-        if "기타:" in body['body']:
+        if "기타:" in question_selections:
             continue
         
         if p_radio.search(question_type):
-       
+            print(question_selections)
             for index in range(len(data_excel.values)):
                 data = data_excel.values[index][titles_blueprint.index(question_title)+1]
                 print(data)
+                if (not str(data) in question_selections) and (str(data) != 'nan'):
+                    return True
 
     #     if blueprint_body['type'] == 'check' or blueprint_body['type'] == 'radio':
             
