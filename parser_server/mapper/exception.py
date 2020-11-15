@@ -29,8 +29,7 @@ def exception_unexpeted_data(data_blueprint, get_excel):
     
     data_blueprint_body = data_blueprint['contents']['body']
     data_excel = matching_data(data_blueprint_body, get_excel)
-    type_dict = matching_type(data_blueprint_body, data_excel)
-    print(type_dict)
+   
     p_radio = re.compile('radio')
     p_check = re.compile('check')
     
@@ -49,25 +48,22 @@ def exception_unexpeted_data(data_blueprint, get_excel):
             continue
         
         if p_radio.search(question_type):
+            for index in range(len(data_excel.values)):
+                answer = data_excel.values[index][titles_blueprint.index(question_title)+1]
+                if (not str(answer) in question_selections) and (str(answer) != 'nan'):
+                    return True
+        
+        if p_check.search(question_type):
             print(question_selections)
             for index in range(len(data_excel.values)):
-                data = data_excel.values[index][titles_blueprint.index(question_title)+1]
-                print(data)
-                if (not str(data) in question_selections) and (str(data) != 'nan'):
-                    return True
+                answers = data_excel.values[index][titles_blueprint.index(question_title)+1].split(',')
+                for answer in answers:
+                    if answer[0] == ' ':
+                        answer = answer[1:]
+                    if (not str(answer) in question_selections) and (str(answer) != 'nan'):
+                        return True
 
-    #     if blueprint_body['type'] == 'check' or blueprint_body['type'] == 'radio':
-            
-    #         if '기타:' not in blueprint_body['body']:
-    #             excel_header_data = []
-    #             for n in get_excel[blueprint_body['title']]:
-    #                 if str(n) != 'nan':
-    #                     excel_header_data.append(n)
-    #             print('excel_header_data : ',excel_header_data)
-    #             for answer in excel_header_data:
-    #                 if answer not in blueprint_body['body']:
-    #                     pass
-    return 'END'
+    return False
   
 if __name__ == '__main__':
 

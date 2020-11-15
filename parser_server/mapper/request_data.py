@@ -50,8 +50,8 @@ request_data = {
                 "멘토",
                 "1차 프로젝트",
                 "2차 프로젝트",
-                "기업협업"
-                # "기타:"
+                "기업협업",
+                "기타:"
                 ],
                 "url": "https://s3.ap-northeast-2.amazonaws.com/pocketsurvey.earlysloth/images/uu/6f00627a-60ca-4d8b-8989-18589e9a6eb1.png",
                 "isrequired": True
@@ -65,8 +65,7 @@ request_data = {
                 "27",
                 "28",
                 "29",
-                "30 이상",
-                "기타:"
+                "30 이상"
                 ],
                 "url": "",
                 "isrequired": True
@@ -76,7 +75,8 @@ request_data = {
                 "title": "해당 하는 것을 선택해주세요 [30대다]",
                 "body": [
                 "예",
-                "아니오"
+                "아니오",
+                "기타:"
                 ],
                 "url": "",
                 "isrequired": True
@@ -86,7 +86,8 @@ request_data = {
                 "title": "해당 하는 것을 선택해주세요 [직장인이다]",
                 "body": [
                 "예",
-                "아니오"
+                "아니오",
+                "기타:"
                 ],
                 "url": "",
                 "isrequired": True
@@ -101,8 +102,8 @@ request_data = {
                   "아이슬란드",
                   "폴란드",
                   "미국",
-                  "페루",
-                  "기타:"
+                  "페루"
+                  # "기타:"
                 ],
                 "url": "",
                 "isrequired": True,
