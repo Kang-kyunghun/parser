@@ -38,23 +38,23 @@ def data_mapper(get_excel, data_blueprint):
             question_type = type_dict[index]
             
             if question_type == 'radio':
-                question_data = mapper_radio(data_blueprint, data_excel, data_answer, unix_time, uuid)
+                question_data = mapper_radio(data_blueprint, data_answer, unix_time, uuid)
                 response_data.append(question_data)
             
             elif question_type == 'shorttext':
-                question_data = mapper_shorttext(data_blueprint, data_excel, data_answer,  unix_time, uuid)
+                question_data = mapper_shorttext(data_blueprint, data_answer,  unix_time, uuid)
                 response_data.append(question_data)
             
             elif question_type == 'radio_image_selections':
-                question_data = mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix_time, uuid)
+                question_data = mapper_radio_image_selections(data_blueprint, data_answer,  unix_time, uuid)
                 response_data.append(question_data)
 
             elif question_type == 'check':
-                question_data = mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid)
+                question_data = mapper_check(data_blueprint, data_answer,  unix_time, uuid)
                 response_data.append(question_data)
             
             elif question_type == 'check_image_selections':
-                question_data = mapper_check_image_selections(data_blueprint, data_excel, data_answer,  unix_time, uuid)
+                question_data = mapper_check_image_selections(data_blueprint, data_answer,  unix_time, uuid)
                 response_data.append(question_data)
         
         result = {

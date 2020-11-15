@@ -5,7 +5,7 @@ from uuid import uuid4
 from .utils import change_time_format
 
 
-def mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid):
+def mapper_radio(data_blueprint, data_answer,  unix_time, uuid):
     answer = data_answer["answer"]
     if str(type(answer)) == "<class 'float'>" :
         answer = ""
@@ -46,7 +46,7 @@ def mapper_radio(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     }
     return mapping
 
-def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix_time, uuid):
+def mapper_radio_image_selections(data_blueprint, data_answer,  unix_time, uuid):
     answer = data_answer["answer"]
     if str(type(answer)) == "<class 'float'>" :
         answer = ""
@@ -89,7 +89,7 @@ def mapper_radio_image_selections(data_blueprint, data_excel, data_answer,  unix
     }
     return mapping
 
-def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
+def mapper_check(data_blueprint, data_answer,  unix_time, uuid):
     order = data_answer["order"] -1
     body = data_blueprint["contents"]["body"][order]
     selections = body["body"]
@@ -147,7 +147,7 @@ def mapper_check(data_blueprint, data_excel, data_answer,  unix_time, uuid):
     }
     return mapping
 
-def mapper_check_image_selections(data_blueprint, data_excel, data_answer,  unix_time, uuid):
+def mapper_check_image_selections(data_blueprint, data_answer,  unix_time, uuid):
     order = data_answer["order"] -1
     body = data_blueprint["contents"]["body"][order]
     selections = body["body"]
@@ -207,7 +207,7 @@ def mapper_check_image_selections(data_blueprint, data_excel, data_answer,  unix
     }
     return mapping
 
-def mapper_shorttext(data_blueprint, data_excel, data_answer,  unix_time, uuid):
+def mapper_shorttext(data_blueprint, data_answer,  unix_time, uuid):
     answer = data_answer["answer"]
     if str(type(answer)) == "<class 'float'>" :
         answer = ""
