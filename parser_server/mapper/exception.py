@@ -64,17 +64,3 @@ def exception_unexpeted_data(data_blueprint, get_excel):
                         return True
 
     return False
-  
-if __name__ == '__main__':
-
-    data_blueprint = request_data
-    get_excel = pd.read_excel("https://upload-data-jack.s3.ap-northeast-2.amazonaws.com/edited_test_data.xlsx")
-    # get_excel = pd.read_excel("https://upload-data-jack.s3.ap-northeast-2.amazonaws.com/empty_data.xlsx")
-   
-
-    
-    # result = exception_title(body_blueprint, get_excel)
-    result = exception_unexpeted_data(data_blueprint, get_excel)
-    print(result) 
-    # data = get_excel.values[1][1] #앞: 사람, 뒤: 문항
-    # print(data)

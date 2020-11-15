@@ -23,11 +23,11 @@ class DataMappingView(View):
             if exception_title(data_blueprint, get_excel):
                 return JsonResponse({'status': '문항 제목이 일치하지 않습니다.'}, status=400)
 
-            # 타임스탬프 외에 데이터가 전혀 없으면 에러
-           
+            # 타임스탬프 외에 데이터가 전혀 없으면 예외처리
             if exception_empty_data(get_excel):
                 return JsonResponse({'status': '엑셀 데이터가 없습니다.'}, status=400)
             
+            #선택지에 기타가 없는데, 선택지에 없는 답변을 했을 때 예외처리
             if exception_unexpeted_data(data_blueprint, get_excel):
                 return JsonResponse({'status': '답변이 일치하지 않습니다'}, status=200)
             

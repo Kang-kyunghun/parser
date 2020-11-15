@@ -6,6 +6,7 @@ import pandas as pd
 
 from uuid import uuid4
 
+#s3 업로드
 def s3_uploader(result):
     s3_client = boto3.client(
         's3',
@@ -20,14 +21,14 @@ def s3_uploader(result):
         Bucket="upload-data-jack",
         Key=f"{result['surveyId']}/googleFormResponse__{result['surveyId']}__{result['version']}__{result['responseData'][0]['uuid']}.json"
     )
-
+#local time change to unix time
 def change_time_format(local_time):
     str_time = local_time
     in_time = time.strptime(str_time,'%Y-%m-%d %H:%M:%S.%f')
     unix_time = time.mktime(in_time)
     
     return unix_time
-
+#blueprint와 엑셀의 제목을 비교하여 해당 제목의 타입 결정
 def matching_type(body_blueprint, data_excel):
     data_bodies = body_blueprint
     titles_excel = list(data_excel.columns)
@@ -42,6 +43,7 @@ def matching_type(body_blueprint, data_excel):
 
     return type_dict
 
+# bluprint의 문항 순서에 맞게 엑셀 데이터 재배치
 def matching_data(body_blueprint, get_excel):
     
     data_bodies = body_blueprint
