@@ -1,7 +1,7 @@
 from request_data import request_data
 import pandas           as pd
-
-from utils import matching_data
+import re
+from utils import matching_data, matching_type
 def exception_title(data_blueprint, get_excel):
     
     bodies_blueprint = data_blueprint['contents']['body']
@@ -24,17 +24,58 @@ def exception_empty_data(get_excel):
             if not str(answer) == 'nan':
                 return False
     return True
+
+def exception_unexpeted_data(data_blueprint, get_excel):
+    
+    data_blueprint_body = data_blueprint['contents']['body']
+    data_excel = matching_data(data_blueprint_body, get_excel)
+    type_dict = matching_type(data_blueprint_body, data_excel)
+    print(type_dict)
+    p_radio = re.compile('radio')
+    p_check = re.compile('check')
+    
+    titles_blueprint = []
+    for body in data_blueprint_body:
+        titles_blueprint.append(body['title'])
+
+    for body in data_blueprint_body:
+        question_type = body['type']
+        question_title = body['title']
+        if not (p_radio.search(question_type) or p_check.search(question_type)):
+           continue
+        
+        if "기타:" in body['body']:
+            continue
+        
+        if p_radio.search(question_type):
+       
+            for index in range(len(data_excel.values)):
+                data = data_excel.values[index][titles_blueprint.index(question_title)+1]
+                print(data)
+
+    #     if blueprint_body['type'] == 'check' or blueprint_body['type'] == 'radio':
+            
+    #         if '기타:' not in blueprint_body['body']:
+    #             excel_header_data = []
+    #             for n in get_excel[blueprint_body['title']]:
+    #                 if str(n) != 'nan':
+    #                     excel_header_data.append(n)
+    #             print('excel_header_data : ',excel_header_data)
+    #             for answer in excel_header_data:
+    #                 if answer not in blueprint_body['body']:
+    #                     pass
+    return 'END'
   
 if __name__ == '__main__':
 
-    body_blueprint = request_data
+    data_blueprint = request_data
     get_excel = pd.read_excel("https://upload-data-jack.s3.ap-northeast-2.amazonaws.com/edited_test_data.xlsx")
     # get_excel = pd.read_excel("https://upload-data-jack.s3.ap-northeast-2.amazonaws.com/empty_data.xlsx")
    
 
     
     # result = exception_title(body_blueprint, get_excel)
-    # result = matching_data(body_blueprint, get_excel)
-    # print(result) 
-    data = get_excel
-    print(exception_empty_data(data))
+    result = exception_unexpeted_data(data_blueprint, get_excel)
+    print(result) 
+    # data = get_excel.values[1][1] #앞: 사람, 뒤: 문항
+    # print(data)
