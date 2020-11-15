@@ -1,4 +1,4 @@
-from request_data import request_data
+from mapper.request_data import request_data
 import json
 import boto3
 import time

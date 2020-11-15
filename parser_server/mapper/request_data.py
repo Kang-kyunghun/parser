@@ -32,7 +32,6 @@ request_data = {
     "contents" : {
       "survey_title": "모든 타입 설문",
       "survey_description": "모든 타입 설문",
-      "googleFormResponseRemoteKey": "엑셀 파일의 s3 remote key",
       "body": [
             {
                 "type": "shorttext",
@@ -75,8 +74,7 @@ request_data = {
                 "title": "해당 하는 것을 선택해주세요 [30대다]",
                 "body": [
                 "예",
-                "아니오",
-                "기타:"
+                "아니오"
                 ],
                 "url": "",
                 "isrequired": True
@@ -86,8 +84,7 @@ request_data = {
                 "title": "해당 하는 것을 선택해주세요 [직장인이다]",
                 "body": [
                 "예",
-                "아니오",
-                "기타:"
+                "아니오"
                 ],
                 "url": "",
                 "isrequired": True
@@ -102,8 +99,8 @@ request_data = {
                   "아이슬란드",
                   "폴란드",
                   "미국",
-                  "페루"
-                  # "기타:"
+                  "페루",
+                  "기타:"
                 ],
                 "url": "",
                 "isrequired": True,

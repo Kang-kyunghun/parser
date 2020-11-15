@@ -3,13 +3,13 @@ import json
 from math import isnan
 from uuid import uuid4
 from django_rq import job
-from function_mapper import (mapper_radio,
+from mapper.function_mapper import (mapper_radio,
                              mapper_check,
                              mapper_radio_image_selections,
                              mapper_check_image_selections,
                              mapper_shorttext)
 
-from utils import change_time_format, matching_data, matching_type, s3_uploader
+from mapper.utils import change_time_format, matching_data, matching_type, s3_uploader
 
 def data_mapper(get_excel, data_blueprint):
    
