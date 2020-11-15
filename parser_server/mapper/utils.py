@@ -1,4 +1,4 @@
-from .request_data import request_data
+from request_data import request_data
 import json
 import boto3
 import time
@@ -42,10 +42,10 @@ def matching_type(body_blueprint, data_excel):
 
     return type_dict
 
-def matching_data(body_blueprint, data_excel):
+def matching_data(body_blueprint, get_excel):
     
     data_bodies = body_blueprint
-    titles_excel = list(data_excel.columns)
+    titles_excel = list(get_excel.columns)
     unmatched_titles = list(titles_excel[1:])
     titles_blueprint = []
     for body in data_bodies:
@@ -58,6 +58,6 @@ def matching_data(body_blueprint, data_excel):
                 break
     
     for unmatched_data in unmatched_titles:
-        del data_excel[unmatched_data]
-    data_excel = data_excel[['타임스탬프']+titles_blueprint]
+        del get_excel[unmatched_data]
+    data_excel = get_excel[['타임스탬프']+titles_blueprint]
     return data_excel

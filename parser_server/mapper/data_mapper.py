@@ -3,20 +3,21 @@ import json
 from math import isnan
 from uuid import uuid4
 from django_rq import job
-from .function_mapper import (mapper_radio,
+from function_mapper import (mapper_radio,
                              mapper_check,
                              mapper_radio_image_selections,
                              mapper_check_image_selections,
                              mapper_shorttext)
 
-from .utils import change_time_format, matching_data, matching_type, s3_uploader
+from utils import change_time_format, matching_data, matching_type, s3_uploader
 
 def data_mapper(get_excel, data_blueprint):
    
     data_blueprint_body = data_blueprint['contents']['body']
     
     data_excel = matching_data(data_blueprint_body, get_excel)
-    type_dict = matching_type( data_blueprint_body, data_excel)
+    
+    type_dict = matching_type(data_blueprint_body, data_excel)
     
     answers_all = data_excel.values
 

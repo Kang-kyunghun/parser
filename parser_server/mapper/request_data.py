@@ -56,20 +56,20 @@ request_data = {
                 "url": "https://s3.ap-northeast-2.amazonaws.com/pocketsurvey.earlysloth/images/uu/6f00627a-60ca-4d8b-8989-18589e9a6eb1.png",
                 "isrequired": True
             },
-            {
-                "type": "radio",
-                "title": "당신의 나이는?",
-                "body": [
-                "25",
-                "26",
-                "27",
-                "28",
-                "29",
-                "30 이상"
-                ],
-                "url": "",
-                "isrequired": True
-            },
+            # {
+            #     "type": "radio",
+            #     "title": "당신의 나이는?",
+            #     "body": [
+            #     "25",
+            #     "26",
+            #     "27",
+            #     "28",
+            #     "29",
+            #     "30 이상"
+            #     ],
+            #     "url": "",
+            #     "isrequired": True
+            # },
             {
                 "type": "check",
                 "title": "해당 하는 것을 선택해주세요 [30대다]",
@@ -90,27 +90,27 @@ request_data = {
                 "url": "",
                 "isrequired": True
             },
-            {
-                "type": "check",
-                "title": "다녀와본 나라는? (중복 선택 가능)",
-                "body": [
-                  "영국",
-                  "프랑스",
-                  "중국",
-                  "아이슬란드",
-                  "폴란드",
-                  "미국",
-                  "페루",
-                  "기타:"
-                ],
-                "url": "",
-                "isrequired": True,
-                "nid": "Q2",
-                "sel_ranges": {
-                  "max": 5,
-                  "min": 1
-                }
-              },
+            # {
+            #     "type": "check",
+            #     "title": "다녀와본 나라는? (중복 선택 가능)",
+            #     "body": [
+            #       "영국",
+            #       "프랑스",
+            #       "중국",
+            #       "아이슬란드",
+            #       "폴란드",
+            #       "미국",
+            #       "페루",
+            #       "기타:"
+            #     ],
+            #     "url": "",
+            #     "isrequired": True,
+            #     "nid": "Q2",
+            #     "sel_ranges": {
+            #       "max": 5,
+            #       "min": 1
+            #     }
+              # },
             {
                 "type": "check_image_selections",
                 "title": "현재 기분과 가장 비슷한 것은?",
