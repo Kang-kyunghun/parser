@@ -9,7 +9,7 @@ from django.http        import JsonResponse
 from django.views       import View
 
 from mapper.data_mapper import data_mapper
-from mapper.exception   import exception_title
+from mapper.exception   import exception_title, exception_empty_data
 class DataMappingView(View):
     def post(self, request):
 
@@ -25,17 +25,13 @@ class DataMappingView(View):
         excel_titles = list(get_excel.columns)
         excel_answer = list(get_excel.iloc)
         try:
+            #blueprint에서의 제목이 모두 엑셀에 없을 경우
             if exception_title(data_blueprint, get_excel):
                 return JsonResponse({'status': '문항 제목이 일치하지 않습니다.'}, status=400)
 
             # 타임스탬프 외에 데이터가 전혀 없으면 에러
-            count = 0
-            for row in range(len(excel_answer)):
-                for col in range(1,len(excel_titles)):
-                    if str(excel_body_data[row][col]) != 'nan':
-                        break
-                    count += 1
-            if count == (len(excel_answer) * (len(excel_titles)-1)):
+           
+            if exception_empty_data(get_excel):
                 return JsonResponse({'status': '엑셀 데이터가 없습니다.'}, status=400)
             
             # 문항 제목이 같을 때 blueprint 옵션에 '기타'항목 여부 확인
