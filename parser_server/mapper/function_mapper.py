@@ -25,24 +25,7 @@ def mapper_radio(data_blueprint, data_answer,  unix_time, uuid):
             etc_input = data_answer["answer"]
     
     mapping = {
-        "answered_text": str(answer),
-        "created_at": unix_time,
-        "duration": 1.0,
-        "etc_input": etc_input,
-        "finished_at": unix_time + 1.0,
-        "has_etc": has_etc,
-        "is_etc": is_etc,
-        "metadata": {},
-        "phone": "01000000000",
-        "question_order": order,
-        "question_text": body["title"],
-        "question_type": "radio",
-        "selections": selections,
-        "started_at": unix_time,
-        "survey_id": data_blueprint["surveyId"],
-        "user_key": "",
-        "uuid": uuid,
-        "version": data_blueprint["version"]
+        
     }
     return mapping
 
@@ -67,25 +50,7 @@ def mapper_radio_image_selections(data_blueprint, data_answer,  unix_time, uuid)
             etc_input = data_answer["answer"]
     
     mapping = {
-        "answered_text": str(answer),
-        "created_at": unix_time,
-        "duration": 1.0,
-        "etc_input": etc_input,
-        "finished_at": unix_time + 1.0,
-        "has_etc": has_etc,
-        "image_selections" : image_selections,
-        "is_etc": is_etc,
-        "metadata": {},
-        "phone": "01000000000",
-        "question_order": order,
-        "question_text": body["title"],
-        "question_type": "radio_image_selections",
-        "selections": selections,
-        "started_at": unix_time,
-        "survey_id": data_blueprint["surveyId"],
-        "user_key": "",
-        "uuid": uuid,
-        "version": data_blueprint["version"]
+       
     }
     return mapping
 
@@ -125,25 +90,7 @@ def mapper_check(data_blueprint, data_answer,  unix_time, uuid):
         answered_text = ','.join(sel_order) if not etc_input else ','.join(sel_order) + '|' + etc_input
         
     mapping = {
-        "answered_text": str(answered_text),
-        "created_at": unix_time,
-        "duration": 1.0,
-        "etc_input": etc_input,
-        "finished_at": unix_time + 1.0,
-        "has_etc": has_etc,
-        "is_etc": is_etc,
-        "metadata": {},
-        "phone": "01000000000",
-        "question_order": order,
-        "question_text": body["title"],
-        "question_type": "check",
-        "sel_ranges" : sel_ranges,
-        "selections": selections,
-        "started_at": unix_time,
-        "survey_id": data_blueprint["surveyId"],
-        "user_key": "",
-        "uuid": uuid,
-        "version": data_blueprint["version"]
+       
     }
     return mapping
 
@@ -184,26 +131,7 @@ def mapper_check_image_selections(data_blueprint, data_answer,  unix_time, uuid)
         answered_text = ','.join(sel_order) if not etc_input else ','.join(sel_order) + '|' + etc_input
     
     mapping = {
-        "answered_text": str(answered_text),
-        "created_at": unix_time,
-        "duration": 1.0,
-        "etc_input": etc_input,
-        "finished_at": unix_time + 1.0,
-        "has_etc": has_etc,
-        "image_selections" : image_selections,
-        "is_etc": is_etc,
-        "metadata": {},
-        "phone": "01000000000",
-        "question_order": order,
-        "question_text": body["title"],
-        "question_type": "check_image_selections",
-        "sel_ranges" : sel_ranges,
-        "selections": selections,
-        "started_at": unix_time,
-        "survey_id": data_blueprint["surveyId"],
-        "user_key": "",
-        "uuid": uuid,
-        "version": data_blueprint["version"]
+        
     }
     return mapping
 
@@ -215,24 +143,7 @@ def mapper_shorttext(data_blueprint, data_answer,  unix_time, uuid):
     body = data_blueprint["contents"]["body"][order]
     
     mapping = {
-        "answered_text": str(answer),
-        "created_at": unix_time,
-        "duration": 1.0,
-        "etc_input": None,
-        "finished_at": unix_time + 1.0,
-        "has_etc": False,
-        "is_etc": False,
-        "metadata": {},
-        "phone": "01000000000",
-        "question_order": order,
-        "question_text": body["title"],
-        "question_type": "shorttext",
-        "selections": "",
-        "started_at": unix_time,
-        "survey_id": data_blueprint["surveyId"],
-        "user_key": "",
-        "uuid": uuid,
-        "version": data_blueprint["version"]
+        
     }
     return mapping
     
